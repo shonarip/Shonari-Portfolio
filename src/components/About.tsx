@@ -15,7 +15,7 @@ export function About() {
         {site.about.paragraphs.map((p, i) => (
           <p
             key={i}
-            className="font-serif text-base leading-relaxed text-ink-soft sm:text-lg"
+            className="font-sans text-base leading-relaxed text-ink-soft sm:text-lg"
           >
             {p}
           </p>

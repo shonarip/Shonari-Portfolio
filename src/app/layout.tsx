@@ -1,31 +1,27 @@
 import type { Metadata } from "next";
-import {
-  IBM_Plex_Mono,
-  Libre_Baskerville,
-  UnifrakturMaguntia,
-} from "next/font/google";
+import { DM_Sans, Space_Grotesk, Syne } from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const mono = IBM_Plex_Mono({
+const sans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const mono = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-mono",
   display: "swap",
 });
 
-const serif = Libre_Baskerville({
+const display = Syne({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-  display: "swap",
-});
-
-const blackletter = UnifrakturMaguntia({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-blackletter",
+  weight: ["700", "800"],
+  variable: "--font-display",
   display: "swap",
 });
 
@@ -47,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${mono.variable} ${serif.variable} ${blackletter.variable}`}
+      className={`${sans.variable} ${mono.variable} ${display.variable}`}
     >
-      <body className="min-h-screen font-serif">{children}</body>
+      <body className="min-h-screen font-sans">{children}</body>
     </html>
   );
 }

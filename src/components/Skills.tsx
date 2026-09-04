@@ -15,7 +15,7 @@ export function Skills() {
       <div className="grid gap-10 sm:grid-cols-3 sm:gap-8">
         {site.skills.groups.map((group) => (
           <div key={group.title}>
-            <h3 className="font-serif text-sm italic text-ink-muted">
+            <h3 className="font-sans text-sm italic text-ink-muted">
               {group.title}
             </h3>
             <ul className="mt-4 space-y-2">

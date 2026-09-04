@@ -10,22 +10,31 @@ const config: Config = {
     extend: {
       colors: {
         canvas: {
-          DEFAULT: "#f4f1ea",
-          soft: "#f8f5ef",
-          muted: "#ebe6dc",
+          DEFAULT: "#0c0c0d",
+          soft: "#141416",
+          muted: "#1c1c1f",
         },
         ink: {
-          DEFAULT: "#1a1a1a",
-          soft: "#3a3a3a",
-          muted: "#6b6b6b",
-          faint: "#9a958c",
+          DEFAULT: "#efe8e0",
+          soft: "#c9c0b6",
+          muted: "#8f877e",
+          faint: "#5e5852",
+        },
+        accent: {
+          DEFAULT: "#ff3b7a",
+          soft: "#ff6b9d",
+        },
+        cool: {
+          DEFAULT: "#8b9cff",
+          soft: "#a8b4ff",
         },
       },
       fontFamily: {
-        serif: ["var(--font-serif)", "Georgia", "serif"],
-        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
-        display: ["var(--font-display)", "Georgia", "serif"],
-        blackletter: ["var(--font-blackletter)", "serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        serif: ["var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-sans-serif", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        blackletter: ["var(--font-display)", "system-ui", "sans-serif"],
       },
       fontSize: {
         "2xs": ["0.625rem", { lineHeight: "1.2" }],

@@ -38,7 +38,7 @@ export function ProjectBlock({
           ? { target: "_blank", rel: "noopener noreferrer" }
           : {})}
       >
-        <div className="overflow-hidden border border-ink/10 bg-canvas transition-[opacity,transform] duration-300 group-hover:opacity-90 group-focus-visible:ring-1 group-focus-visible:ring-ink">
+        <div className="overflow-hidden border border-ink/10 bg-canvas transition-[opacity,transform] duration-300 group-hover:opacity-90 group-focus-visible:ring-1 group-focus-visible:ring-cool">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={image}
@@ -50,7 +50,7 @@ export function ProjectBlock({
 
       <div className="mt-4 text-center sm:mt-5">
         <div className="flex flex-wrap items-baseline justify-center gap-x-3 gap-y-1">
-          <h3 className="font-serif text-lg text-ink sm:text-xl">
+          <h3 className="font-sans text-lg text-ink sm:text-xl">
             <a
               href={href}
               className="hover:underline"
@@ -68,8 +68,8 @@ export function ProjectBlock({
             {year}
           </time>
         </div>
-        <p className="mt-1 font-serif text-sm italic text-ink-muted">{role}</p>
-        <p className="mx-auto mt-3 max-w-lg font-serif text-sm leading-relaxed text-ink-soft">
+        <p className="mt-1 font-sans text-sm italic text-ink-muted">{role}</p>
+        <p className="mx-auto mt-3 max-w-lg font-sans text-sm leading-relaxed text-ink-soft">
           {description}
         </p>
         <ul
