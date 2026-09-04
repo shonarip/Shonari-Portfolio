@@ -5,30 +5,21 @@ export function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="section-pad border-b border-ink-200/50 py-20 sm:py-28"
+      className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6 md:py-28"
     >
-      <div className="section-max grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div className="lg:col-span-4">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-600">
-            01
-          </p>
-          <h2
-            id="about-heading"
-            className="mt-3 font-display text-3xl font-semibold tracking-tight text-ink-950 sm:text-4xl"
+      <h2 id="about-heading" className="sr-only">
+        {site.about.heading}
+      </h2>
+      <p className="micro-label mb-8 text-ink-faint">{site.about.heading}</p>
+      <div className="space-y-6">
+        {site.about.paragraphs.map((p, i) => (
+          <p
+            key={i}
+            className="font-sans text-base leading-relaxed text-ink-soft sm:text-lg"
           >
-            {site.about.heading}
-          </h2>
-        </div>
-        <div className="space-y-5 lg:col-span-8">
-          {site.about.paragraphs.map((p, i) => (
-            <p
-              key={i}
-              className="text-lg leading-relaxed text-ink-600 sm:text-xl"
-            >
-              {p}
-            </p>
-          ))}
-        </div>
+            {p}
+          </p>
+        ))}
       </div>
     </section>
   );
