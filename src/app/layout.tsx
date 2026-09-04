@@ -1,17 +1,31 @@
 import type { Metadata } from "next";
-import { Instrument_Sans, Fraunces } from "next/font/google";
+import {
+  IBM_Plex_Mono,
+  Libre_Baskerville,
+  UnifrakturMaguntia,
+} from "next/font/google";
 import { site } from "@/content/site";
 import "./globals.css";
 
-const sans = Instrument_Sans({
+const mono = IBM_Plex_Mono({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500"],
+  variable: "--font-mono",
   display: "swap",
 });
 
-const display = Fraunces({
+const serif = Libre_Baskerville({
   subsets: ["latin"],
-  variable: "--font-display",
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const blackletter = UnifrakturMaguntia({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-blackletter",
   display: "swap",
 });
 
@@ -31,8 +45,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${display.variable}`}>
-      <body className="min-h-screen font-sans">{children}</body>
+    <html
+      lang="en"
+      className={`${mono.variable} ${serif.variable} ${blackletter.variable}`}
+    >
+      <body className="min-h-screen font-serif">{children}</body>
     </html>
   );
 }

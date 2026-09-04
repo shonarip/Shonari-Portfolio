@@ -1,9 +1,8 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
 import { Work } from "@/components/Work";
+import { About } from "@/components/About";
 import { Skills } from "@/components/Skills";
-import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 export default function HomePage() {
@@ -12,10 +11,9 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <About />
         <Work />
+        <About />
         <Skills />
-        <Contact />
       </main>
       <Footer />
     </>

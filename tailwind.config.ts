@@ -9,50 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: {
-          50: "#f7f6f4",
-          100: "#ebe8e3",
-          200: "#d6d0c6",
-          300: "#b8aea0",
-          400: "#97897a",
-          500: "#7d6f62",
-          600: "#66594f",
-          700: "#534841",
-          800: "#463d38",
-          900: "#3c3531",
-          950: "#1f1b19",
+        canvas: {
+          DEFAULT: "#f4f1ea",
+          soft: "#f8f5ef",
+          muted: "#ebe6dc",
         },
-        accent: {
-          50: "#fff5f1",
-          100: "#ffe8df",
-          200: "#ffd0bf",
-          300: "#ffb093",
-          400: "#ff835a",
-          500: "#f85d2f",
-          600: "#e94215",
-          700: "#c3320f",
-          800: "#a12c12",
-          900: "#852a14",
-          950: "#481207",
+        ink: {
+          DEFAULT: "#1a1a1a",
+          soft: "#3a3a3a",
+          muted: "#6b6b6b",
+          faint: "#9a958c",
         },
       },
       fontFamily: {
+        serif: ["var(--font-serif)", "Georgia", "serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
         display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        blackletter: ["var(--font-blackletter)", "serif"],
       },
-      animation: {
-        "fade-up": "fadeUp 0.7s ease-out both",
-        "fade-in": "fadeIn 0.6s ease-out both",
+      fontSize: {
+        "2xs": ["0.625rem", { lineHeight: "1.2" }],
       },
-      keyframes: {
-        fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(16px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
+      letterSpacing: {
+        micro: "0.08em",
       },
     },
   },
