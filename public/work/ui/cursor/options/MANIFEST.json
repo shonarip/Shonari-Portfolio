@@ -1,0 +1,52 @@
+{
+  "hotspot": [
+    15,
+    3
+  ],
+  "size": 32,
+  "animated": false,
+  "options": {
+    "A": {
+      "file": "/work/ui/cursor/options/a-soft-star-punchy.png",
+      "hotspot": [
+        15,
+        3
+      ],
+      "label": "soft-star-punchy"
+    },
+    "B": {
+      "file": "/work/ui/cursor/options/b-ring-core.png",
+      "hotspot": [
+        15,
+        3
+      ],
+      "label": "ring-core"
+    },
+    "C": {
+      "file": "/work/ui/cursor/options/c-four-point-spark.png",
+      "hotspot": [
+        15,
+        3
+      ],
+      "label": "four-point-spark"
+    },
+    "D": {
+      "file": "/work/ui/cursor/options/d-small-diamond.png",
+      "hotspot": [
+        15,
+        3
+      ],
+      "label": "small-diamond"
+    },
+    "E": {
+      "file": "/work/ui/cursor/options/e-crescent-tip.png",
+      "hotspot": [
+        15,
+        3
+      ],
+      "label": "crescent-tip"
+    }
+  },
+  "preview": "/work/ui/cursor/options/preview-sheet.jpg",
+  "notes": "Static only. No glow. Tip hotspot. For Shonari pick A\u2013E."
+}

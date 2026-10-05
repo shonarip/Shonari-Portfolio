@@ -1,0 +1,18 @@
+# dependencies
+/node_modules
+/.next/
+/out/
+.DS_Store
+# large local video previews (keep posters tracked)
+/public/videos/*
+!/public/videos/posters/
+!/public/videos/posters/**
+!/public/videos/.gitkeep
+
+# large videography binaries (keep posters if added)
+/public/work/videography/*
+!/public/work/videography/.gitkeep
+/public/videos/*
+!/public/videos/posters/
+!/public/videos/posters/**
+!/public/videos/.gitkeep

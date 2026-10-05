@@ -1,0 +1,45 @@
+{
+  "default": {
+    "file": "/work/ui/cursor/star-default.png",
+    "hotspot": [
+      15,
+      3
+    ]
+  },
+  "twinkle": [
+    {
+      "file": "/work/ui/cursor/star-twinkle-1.png",
+      "hotspot": [
+        15,
+        3
+      ]
+    },
+    {
+      "file": "/work/ui/cursor/star-twinkle-2.png",
+      "hotspot": [
+        15,
+        3
+      ]
+    },
+    {
+      "file": "/work/ui/cursor/star-twinkle-3.png",
+      "hotspot": [
+        15,
+        3
+      ]
+    }
+  ],
+  "hover": {
+    "file": "/work/ui/cursor/star-hover.png",
+    "hotspot": [
+      15,
+      3
+    ]
+  },
+  "animation": {
+    "fps": 8,
+    "loop": "1\u21922\u21923\u21922\u21921",
+    "pause_on_hover_use_hover_frame": true
+  },
+  "notes": "Punchier soft-star + twinkle. No soft glow. Tip hotspot 15,3. For JS-follow cursor."
+}

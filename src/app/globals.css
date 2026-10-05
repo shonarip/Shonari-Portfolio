@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #1a050a;
+  }
+
+  body {
+    @apply bg-transparent text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-canvas;
+  }
+
+  :focus-visible {
+    @apply outline outline-1 outline-offset-2 outline-cool;
+  }
+}
+
+
+/* Custom cursor — E crescent tip, static (Chief lock 2026-09-18). Fine pointer only. */
+@media (hover: hover) and (pointer: fine) {
+  body {
+    cursor: url("/work/ui/cursor/crescent-tip.png") 15 3, auto;
+  }
+
+  a,
+  button,
+  [role="button"],
+  summary,
+  label[for],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  select,
+  .cursor-pointer {
+    cursor: url("/work/ui/cursor/crescent-tip.png") 15 3, pointer;
+  }
+}
+
+@layer components {
+  .micro-label {
+    @apply font-mono text-2xs uppercase tracking-micro text-ink;
+  }
+
+  .chyron-label {
+    @apply font-mono text-xs uppercase tracking-micro text-ink sm:text-sm;
+  }
+
+  .media-placeholder {
+    background-color: #1a1a1d;
+    background-image: radial-gradient(#efe8e033 0.6px, transparent 0.6px);
+    background-size: 10px 10px;
+  }
+
+  .media-placeholder-alt {
+    background-color: #222226;
+    background-image:
+      linear-gradient(45deg, #efe8e014 25%, transparent 25%),
+      linear-gradient(-45deg, #efe8e014 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #efe8e014 75%),
+      linear-gradient(-45deg, transparent 75%, #efe8e014 75%);
+    background-size: 14px 14px;
+    background-position: 0 0, 0 7px, 7px -7px, -7px 0;
+  }
+}
+
+@layer components {
+  .chyron-track {
+    animation: chyron-scroll 45s linear infinite;
+  }
+
+  .chyron-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes chyron-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .chyron-track {
+    animation: none;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .group label {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Available Prints — auto-circling strip; pauses on hover */
+@keyframes prints-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.prints-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1.25rem;
+  animation: prints-marquee 48s linear infinite;
+  will-change: transform;
+}
+
+.prints-marquee-track:hover,
+.prints-marquee:hover .prints-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prints-marquee-track {
+    animation: none;
+  }
+}
+
+/* Still frames bubbles (Chief lock 2026-09-25, ?v=bubbles) */
+@keyframes still-bob {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(var(--bob-x), calc(var(--bob-y) * -0.6), 0); }
+  50% { transform: translate3d(0, calc(var(--bob-y) * -1), 0); }
+  75% { transform: translate3d(calc(var(--bob-x) * -1), calc(var(--bob-y) * -0.4), 0); }
+}
+.still-bubble {
+  animation: still-bob var(--bob-dur, 8s) ease-in-out var(--bob-delay, 0s) infinite;
+  will-change: transform;
+}
+.still-bubble:hover,
+.still-bubble:focus-within {
+  animation-play-state: paused;
+}
+.still-bubble-btn {
+  box-shadow: 0 0 18px rgba(140, 180, 255, 0.12), 0 10px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+@media (hover: hover) {
+  .still-bubble-btn:hover,
+  .still-bubble-btn:focus-visible {
+    transform: scale(1.4);
+    border-color: rgba(170, 200, 255, 0.45);
+    box-shadow: 0 0 36px rgba(140, 180, 255, 0.35), 0 18px 50px rgba(0, 0, 0, 0.6);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .still-bubble { animation: none; }
+}
+
+/* Landing skull: locked max sizes (480/580/690), capped only so the whole landing fits one screen.
+   Negative block margin tucks the text into the model's transparent padding. */
+.skull-box {
+  --skull: max(240px, min(480px, 92vw, calc((100svh - 370px + clamp(1.65rem, 4.84vw, 3.575rem)) * 1.45)));
+  max-width: var(--skull);
+  margin-block: calc(var(--skull) * -0.15) calc(var(--skull) * -0.17);
+}
+@media (min-width: 640px) {
+  .skull-box { --skull: max(260px, min(580px, calc((100svh - 370px + clamp(1.65rem, 4.84vw, 3.575rem)) * 1.45))); }
+}
+@media (min-width: 768px) {
+  .skull-box { --skull: max(280px, min(690px, calc((100svh - 415px + clamp(1.65rem, 4.84vw, 3.575rem)) * 1.45))); }
+}
