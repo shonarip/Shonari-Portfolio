@@ -271,3 +271,19 @@
     animation: none;
   }
 }
+
+/* Lava-lamp shader canvas: fades in once the first frame is drawn, then replaces the static glow. */
+.backdrop-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.backdrop-ready .backdrop-canvas {
+  opacity: 1;
+}
+.backdrop-ready .backdrop-orb {
+  display: none;
+}
