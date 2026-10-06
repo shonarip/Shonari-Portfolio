@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { Backdrop } from "@/components/Backdrop";
 import { Lightbox, type LightboxItem } from "@/components/Lightbox";
 import { altFor } from "@/content/alt";
+import { mediaUrl } from "@/content/media";
 import { site } from "@/content/site";
 import { thumbProps } from "@/content/img";
 
@@ -296,7 +297,7 @@ export default function WorkIndexPage() {
       role: item.caption,
       featured: false as const,
       image: item.poster,
-      href: item.src,
+      href: mediaUrl(item.src),
       external: false as const,
     }));
 

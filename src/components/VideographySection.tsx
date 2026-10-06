@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { site } from "@/content/site";
 import variants from "@/content/img-variants.json";
+import { mediaUrl } from "@/content/media";
 
 type VideoItem = (typeof site.videography.items)[number];
 
@@ -54,7 +55,7 @@ function VideoCard({ item }: { item: VideoItem }) {
           onEnded={() => setPlaying(false)}
           onError={() => setFailed(true)}
         >
-          <source src={item.src} type="video/mp4" />
+          <source src={mediaUrl(item.src)} type="video/mp4" />
         </video>
         {!playing && (
           <button
