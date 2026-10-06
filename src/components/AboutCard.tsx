@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { site } from "@/content/site";
-import { altFor } from "@/content/alt";
-import { imgProps, SIZES } from "@/content/img";
 import { Rotator } from "./Rotator";
 
-const PORTRAIT = "/work/homage/thumb-fermenting.jpg";
+const PORTRAIT = "/work/about/shonari-pixel-avatar.png";
+const PORTRAIT_ALT =
+  "Pixel-art avatar of Shonari Phillips: a standing man with short black hair, a mustache and goatee, a gold chain, a white T-shirt, blue jeans and dark sneakers.";
 
 /** The introduction card: a solid color block with a dashed frame, as on the reference layout. */
 export function AboutCard() {
@@ -25,12 +25,16 @@ export function AboutCard() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="border border-dashed border-onpaper/60 p-2">
+            <div className="mx-auto w-full max-w-[380px] border border-dashed border-onpaper/60 bg-white p-2 lg:ml-auto lg:mr-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                {...imgProps(PORTRAIT, SIZES.card)}
-                alt={altFor(PORTRAIT, "Homage to Nihon artwork")}
-                className="aspect-[4/3] w-full object-cover"
+                src={PORTRAIT}
+                alt={PORTRAIT_ALT}
+                width={1584}
+                height={1616}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[1584/1616] w-full object-contain [image-rendering:pixelated]"
               />
             </div>
           </div>

@@ -49,7 +49,8 @@ export function Rotator({ words }: { words: readonly string[] }) {
             key={w}
             style={{ gridArea: "1 / 1", transitionDuration: `${FADE_MS}ms` }}
             className={[
-              "transition-[opacity,transform] ease-out",
+              // Only the current word animates, so the old word is gone before the next one fades in.
+              n === i ? "transition-[opacity,transform] ease-out" : "transition-none",
               n === i && shown ? "translate-y-0 opacity-100" : "translate-y-[0.15em] opacity-0",
             ].join(" ")}
           >
