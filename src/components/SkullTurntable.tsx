@@ -164,9 +164,8 @@ export function SkullTurntable() {
 
   return (
     <div className="skull-box group pointer-events-none relative z-0 mx-auto block aspect-square w-full overflow-visible">
-      <div className="absolute inset-0 opacity-[0.55] transition-opacity group-has-[a:hover]:opacity-80">
+      <div className="absolute inset-0 opacity-[0.45] transition-opacity group-has-[a:hover]:opacity-70">
       <picture
-        aria-hidden="true"
         className={[
           "pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-700",
           ready ? "opacity-0" : "opacity-100",
@@ -175,7 +174,7 @@ export function SkullTurntable() {
         <source srcSet={`${POSTER_DIR}skull-poster-fit.webp`} type="image/webp" />
         <img
           src={`${POSTER_DIR}skull-poster-fit.png`}
-          alt=""
+          alt="White 3D skull on a dark background, slowly turning"
           decoding="async"
           fetchPriority="high"
           className="h-full w-full object-contain"

@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { DM_Sans, Space_Grotesk, Syne, UnifrakturMaguntia } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { DM_Sans, Syne } from "next/font/google";
 import { site } from "@/content/site";
 import { AmbientAudio } from "@/components/AmbientAudio";
 import "./globals.css";
@@ -12,13 +12,6 @@ const sans = DM_Sans({
   display: "swap",
 });
 
-const mono = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
 const display = Syne({
   subsets: ["latin"],
   weight: ["700", "800"],
@@ -26,15 +19,11 @@ const display = Syne({
   display: "swap",
 });
 
-const gothic = UnifrakturMaguntia({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-gothic",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: `${site.name} — ${site.title}`,
+  title: {
+    default: `${site.name} — ${site.title}`,
+    template: `%s — ${site.name}`,
+  },
   description: site.tagline,
   openGraph: {
     title: `${site.name} — ${site.title}`,
@@ -43,17 +32,24 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  themeColor: "#0b0b0e",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${sans.variable} ${mono.variable} ${display.variable} ${gothic.variable}`}
-    >
+    <html lang="en" className={`${sans.variable} ${display.variable}`}>
       <body className="min-h-screen font-sans">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-canvas"
+        >
+          Skip to content
+        </a>
         <AmbientAudio />
         {children}
       </body>

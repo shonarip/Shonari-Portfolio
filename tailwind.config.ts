@@ -10,19 +10,20 @@ const config: Config = {
     extend: {
       colors: {
         canvas: {
-          DEFAULT: "#0c0c0d",
-          soft: "#141416",
-          muted: "#1c1c1f",
+          DEFAULT: "#0b0b0e",
+          soft: "#131318",
+          muted: "#1b1b21",
         },
+        // Text colors, all AA (4.5:1+) on canvas and canvas-soft.
         ink: {
-          DEFAULT: "#efe8e0",
-          soft: "#c9c0b6",
-          muted: "#8f877e",
-          faint: "#8f877e",
+          DEFAULT: "#f2ece4",
+          soft: "#d2cac0",
+          muted: "#a9a198",
+          faint: "#a9a198",
         },
         accent: {
-          DEFAULT: "#ff3b7a",
-          soft: "#ff6b9d",
+          DEFAULT: "#ff4d86",
+          soft: "#ff7aa5",
         },
         cool: {
           DEFAULT: "#8b9cff",
@@ -32,16 +33,14 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "system-ui", "sans-serif"],
         serif: ["var(--font-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "ui-sans-serif", "sans-serif"],
+        mono: ["var(--font-sans)", "system-ui", "sans-serif"],
         display: ["var(--font-display)", "system-ui", "sans-serif"],
-        blackletter: ["var(--font-gothic)", "serif"],
-        gothic: ["var(--font-gothic)", "serif"],
       },
       fontSize: {
-        "2xs": ["0.6875rem", { lineHeight: "1.2" }],
+        "2xs": ["0.8125rem", { lineHeight: "1.4" }],
       },
       letterSpacing: {
-        micro: "0.08em",
+        micro: "0.12em",
       },
     },
   },

@@ -32,26 +32,30 @@ export const site = {
   /** All Works tabs only — Design lane projects under All, not a separate tab (Chief 2026-09-18) */
   workFilters: ["Production", "Manga", "Print", "Photography", "Videography"] as const,
 
-  /** Fixed hero H1 (replaces cycling "does {discipline}" — Chief Ship 3, item 5) */
-  heroLine: "Shonari Phillips designs print, signage, and apparel.",
-  /** Landing H1 (Shonari 2026-09-25): white lead + cycling accent word; a11y reads heroLabel */
-  heroLead: "Shonari Phillips:",
-  heroWords: ["Prints", "Signage", "Apparel"],
-  heroLabel: "Shonari Phillips: Prints, Signage, Apparel.",
-  /** Quiet small-label strip under hero — resume facts only, no logos (item 6) */
-  clientStrip: "",
   resume: "/resume.pdf?v=resume-oct5",
 
-  /** Full-height landing screen buttons (Chief lock, Ship 3) */
-  landing: {
-    primary: { label: "View Portfolio", href: "/portfolio" },
-    secondary: { label: "Contact Me", href: "/contact" },
+  /** First screen: name, what I do, and a clear path to the work. */
+  hero: {
+    eyebrow: "Graphic designer · Tamarac, FL",
+    headline: "Shonari Phillips",
+    summary: "I design print, signage, and apparel, and take each piece from first concept through production.",
+    context: "Currently a graphic designer at Biz Printing USA.",
+    primary: { label: "View my work", href: "/portfolio" },
+    secondary: { label: "Get in touch", href: "/contact" },
+    /** Quick paths into the archive, one per discipline. */
+    lanes: [
+      { label: "Production", href: "/work?lane=Production" },
+      { label: "Print", href: "/work?lane=Print" },
+      { label: "Manga", href: "/work?lane=Manga" },
+      { label: "Photography", href: "/work?lane=Photography" },
+      { label: "Videography", href: "/work?lane=Videography" },
+    ],
   },
 
   /** /work page header copy (replaces hardcoded intro in work/page.tsx) */
   workIndex: {
     heading: "All works",
-    intro: "Every piece, sorted by discipline. The Selected pieces open the page, and the full stories live on the Portfolio page.",
+    intro: "Every piece, grouped by discipline. Open any image to see it full size. The full project stories are on the Portfolio page.",
     backLabel: "Back to Portfolio",
     backHref: "/portfolio",
   },
@@ -66,9 +70,8 @@ export const site = {
 
   nav: [
     { label: "Work", href: "/portfolio" },
-    { label: "All Works", href: "/work" },
+    { label: "All works", href: "/work" },
     { label: "About", href: "/contact#about" },
-    { label: "Contact", href: "/contact" },
     { label: "Resume", href: "/resume.pdf?v=resume-oct5", external: true },
   ],
 
@@ -90,7 +93,7 @@ export const site = {
       slug: "physical-production",
       title: "Physical Production",
       year: "2026",
-      caption: "Wear",
+      caption: "Apparel & signage",
       role: "Print × Signage × Apparel",
       lane: "Production",
       description:
@@ -98,6 +101,7 @@ export const site = {
       caseStudy: {
         client: "Businesses across the Indianapolis and Fort Lauderdale metro areas",
         role: "Lead Graphic Designer",
+        tools: "Adobe Creative Suite, Photoshop, Illustrator",
         deliveredFor: ["Indianapolis Museum of Art", "Century 21", "Carpenter Insurance", "Car dealerships", "Home retail brands"],
         summary: "I'm a graphic designer at Biz Printing USA in Tamarac, designing banners, business cards, flyers, yard signs, and print-and-mail pieces through to press. At FASTSIGNS Indianapolis I was the sole designer, turning out 35–50 designs a week, with production-ready vinyl and graphics for vehicles, substrates, and buildings. At Kingdom Workshop in Fort Lauderdale I designed apparel, signs, and vehicle wraps and produced them in-house.",
       },
@@ -132,17 +136,24 @@ export const site = {
         "/work/physical/pro/18-pro-18-c48bbe25.png",
         "/work/physical/pro/19-pro-19-af10fe90.png",
       ],
-      cta: "VIEW PROJECT",
+      cta: "View project",
     },
     {
       slug: "homage-to-nihon",
       title: "Homage to Nihon",
       year: "2024",
-      caption: "Essence",
+      caption: "Manga edits",
       role: "Art Direction × Manga Edits",
       lane: "Manga",
       description:
         "Creative takes on favorite manga panels and anime characters — extracting what the image represents, never repeating a design. Emotion through the motionless.",
+      caseStudy: {
+        client: "Personal series",
+        role: "Art direction and manga edits",
+        tools: "Adobe Creative Suite, Photoshop, Illustrator",
+        deliveredFor: [],
+        summary: "Homage to Nihon is an ongoing series of edits of manga panels and anime characters. Each piece pulls out what the original image stands for, and no design is repeated.",
+      },
       tags: ["Manga", "Edit", "Japan"],
       href: "/work/homage-to-nihon",
       adobe: "https://shonarip.myportfolio.com/homage-to-nihon",
@@ -177,7 +188,7 @@ export const site = {
         "/work/homage/23.png",
         "/work/homage/24.png",
       ],
-      cta: "VIEW PROJECT",
+      cta: "View project",
     }
   ],
 
@@ -187,12 +198,19 @@ export const site = {
       slug: "homage-to-nihon",
       title: "Homage to Nihon",
       year: "2024",
-      caption: "Essence",
+      caption: "Manga edits",
       role: "Art Direction × Manga Edits",
       lane: "Manga",
       featured: true,
       description:
         "Creative takes on favorite manga panels and anime characters — extracting essence, never the same design twice.",
+      caseStudy: {
+        client: "Personal series",
+        role: "Art direction and manga edits",
+        tools: "Adobe Creative Suite, Photoshop, Illustrator",
+        deliveredFor: [],
+        summary: "Homage to Nihon is an ongoing series of edits of manga panels and anime characters. Each piece pulls out what the original image stands for, and no design is repeated.",
+      },
       tags: ["Manga", "Edit", "Japan"],
       href: "/work/homage-to-nihon",
       adobe: "https://shonarip.myportfolio.com/homage-to-nihon",
@@ -232,7 +250,7 @@ export const site = {
       slug: "eyes-of-the-beholder",
       title: "Eyes of the Beholder",
       year: "2024",
-      caption: "Early",
+      caption: "Early work",
       role: "Graphic Series",
       lane: "Design",
       featured: false,
@@ -247,7 +265,7 @@ export const site = {
       slug: "branding",
       title: "Branding",
       year: "2024",
-      caption: "Mark",
+      caption: "Logos & identity",
       role: "Identity × Systems",
       lane: "Design",
       featured: false,
@@ -262,7 +280,7 @@ export const site = {
       slug: "physical-production",
       title: "Physical Production",
       year: "2026",
-      caption: "Wear",
+      caption: "Apparel & signage",
       role: "Print × Signage × Apparel",
       lane: "Production",
       featured: true,
@@ -271,6 +289,7 @@ export const site = {
       caseStudy: {
         client: "Businesses across the Indianapolis and Fort Lauderdale metro areas",
         role: "Lead Graphic Designer",
+        tools: "Adobe Creative Suite, Photoshop, Illustrator",
         deliveredFor: ["Indianapolis Museum of Art", "Century 21", "Carpenter Insurance", "Car dealerships", "Home retail brands"],
         summary: "I'm a graphic designer at Biz Printing USA in Tamarac, designing banners, business cards, flyers, yard signs, and print-and-mail pieces through to press. At FASTSIGNS Indianapolis I was the sole designer, turning out 35–50 designs a week, with production-ready vinyl and graphics for vehicles, substrates, and buildings. At Kingdom Workshop in Fort Lauderdale I designed apparel, signs, and vehicle wraps and produced them in-house.",
       },
@@ -310,7 +329,7 @@ export const site = {
       slug: "professional-production",
       title: "Professional Production",
       year: "2022",
-      caption: "Local",
+      caption: "Local business promos",
       role: "Commercial Design",
       lane: "Production",
       featured: false,
@@ -325,7 +344,7 @@ export const site = {
       slug: "prints",
       title: "Prints",
       year: "2024",
-      caption: "Solo",
+      caption: "Personal prints",
       role: "Print Archive",
       lane: "Print",
       featured: false,
@@ -342,7 +361,7 @@ export const site = {
   availablePrints: {
     heading: "Prints",
     intro:
-      "Ideas that have come over time. Nothing more / Nothing less. All available for print.",
+      "Original pieces collected over time, all available as prints.",
     /** Adobe Prints solo-work — 17 stills, DZ carousel pack */
     images: [
       "/work/prints/carousel/01.jpg",
@@ -873,7 +892,7 @@ export const site = {
         alt: "Pink-washed profile of a horned girl with closed eyes, a star on her cheek and a black choker.",
       },
       {
-        title: "Mirage0",
+        title: "Mirage",
         year: "2024",
         caption: "Mirage",
         series: "Manga",
@@ -1287,7 +1306,7 @@ export const site = {
         alt: "Pink-washed profile of a horned girl with closed eyes, a star on her cheek and a black choker.",
       },
       {
-        title: "Mirage0",
+        title: "Mirage",
         year: "2024",
         caption: "Mirage",
         series: "Manga",
@@ -1859,60 +1878,70 @@ export const site = {
         year: "2024",
         caption: "Charge",
         image: "/work/manga2/Connection.jpg",
+        alt: "Manga girl in an ochre hooded coat sits above a sleeping figure in a blue hood on dark rocks under a starry blue sky, with the word CONNECT across the middle.",
       },
       {
         title: "Love Figures",
         year: "2024",
         caption: "Close",
         image: "/work/manga2/Love_Figures.jpg",
+        alt: "Collage of three red-faced manga women with black bars over their eyes on torn paper and Japanese text, with cut-out letters spelling LOVE.",
       },
       {
         title: "Two Face Girl",
         year: "2024",
         caption: "Split",
         image: "/work/manga2/Two_facegirl.jpg",
+        alt: "Horned manga girl in red, her face sliced into shifted horizontal bands and her hands on her cheeks, with the word MONSTER at the bottom.",
       },
       {
         title: "Forever Lost",
         year: "2024",
         caption: "Longing",
         image: "/work/manga2/Forever_lost.jpg",
+        alt: "Pale manga figure walking down a narrow strip of starry night sky between two panels of washed-out industrial rooftops.",
       },
       {
         title: "Blue Hues",
         year: "2024",
         caption: "Cool",
         image: "/work/manga2/Blue_Hues.jpg",
+        alt: "Close-up manga portrait with glowing yellow eyes and blue roses in her hair, tinted blue and violet beside a crescent moon.",
       },
       {
         title: "Kojiro",
         year: "2024",
         caption: "Kinetic",
         image: "/work/manga2/Kojiro.jpg",
+        alt: "Black-and-white sketch-textured samurai with flowing hair on a mountainside, with the kanji for bushido in heavy black strokes at left.",
       },
       {
         title: "Zoro",
         year: "2024",
         caption: "Grit",
         image: "/work/manga2/zoro.jpg",
+        alt: "Zoro in a green watercolor kimono sits calmly among falling cherry petals, with the word Patience in black script.",
       },
       {
         title: "Soul of Japan",
         year: "2024",
         caption: "Quiet",
         image: "/work/manga2/Soul_of_japan.jpg",
+        alt: "Black-and-white samurai glowing with a white halo in front of a bushido quote on a dark, grainy background.",
       },
       {
         title: "Sicko",
         year: "2024",
         caption: "Dark",
         image: "/work/manga2/Sicko.jpg",
+        alt: "Horned manga girl with long white hair curled into spirals, a black bar across her eyes and a red face, with SICKO in red letters below.",
       },
       {
         title: "Ronin",
         year: "2024",
         caption: "Alone",
         image: "/work/manga2/Ronin.jpg",
+        alt: "Samurai in kabuki-style face paint walks down an old Japanese street, followed by fading ghost copies of himself.",
       },
     ],
     /**
@@ -1953,7 +1982,7 @@ export const site = {
           { title: "Celestial X-Ray", source: "print", image: "/work/fan/print-celestial-xray.jpg" },
           { title: "Cosmic City", source: "print", image: "/work/fan/print-cosmic-city.jpg" },
           { title: "Cosmic Bamboo", source: "print", image: "/work/fan/print-cosmic-bamboo.jpg" },
-          { title: "Mirage0", source: "manga", image: "/work/manga3/Mirage0.jpg" },
+          { title: "Mirage", source: "manga", image: "/work/manga3/Mirage0.jpg" },
         ],
       },
     ],
@@ -1974,7 +2003,7 @@ export const site = {
       { title: "Celestial X-Ray", source: "print", theme: "Universal", image: "/work/fan/print-celestial-xray.jpg" },
       { title: "Cosmic City", source: "print", theme: "Universal", image: "/work/fan/print-cosmic-city.jpg" },
       { title: "Cosmic Bamboo", source: "print", theme: "Universal", image: "/work/fan/print-cosmic-bamboo.jpg" },
-      { title: "Mirage0", source: "manga", theme: "Universal", image: "/work/manga3/Mirage0.jpg" },
+      { title: "Mirage", source: "manga", theme: "Universal", image: "/work/manga3/Mirage0.jpg" },
     ],
   },
 
@@ -2049,20 +2078,20 @@ export const site = {
   videography: {
     heading: "Videography",
     intro:
-      "Motion studies and music-tied cuts — loopable atmosphere, not client reels.",
+      "Personal motion work: 3D animation, edits, and music-led cuts. These are personal projects, not client reels.",
     seeAll: "/work?lane=Videography",
     /** Homepage strip: 4 (home unchanged; full lane has more) */
     homepageCurated: [
       "On Its Back",
       "Serpent Skull",
       "Low Sun",
-      "Dont Waste our Runaway",
+      "Don't Waste Our Runaway",
     ],
     items: [
       {
         title: "On Its Back",
         year: "2026",
-        caption: "3D",
+        caption: "3D animation",
         src: "/work/videography/cloud-fall.mp4",
         poster: "/work/videography/posters/cloud-fall.jpg",
         alt: "Faceless 3D figure in a gray jacket and navy jeans drifting on its back through pink sunset clouds.",
@@ -2070,7 +2099,7 @@ export const site = {
       {
         title: "Serpent Skull",
         year: "2026",
-        caption: "3D",
+        caption: "3D animation",
         src: "/work/videography/serpent-skull.mp4",
         poster: "/work/videography/posters/serpent-skull.jpg",
         alt: "White 3D skull in profile on dark navy, a small snake slithering through a crack in its crown.",
@@ -2078,7 +2107,7 @@ export const site = {
       {
         title: "Stay Weird",
         year: "2026",
-        caption: "Motion",
+        caption: "Motion graphics",
         src: "/work/videography/stay-weird.mp4",
         poster: "/work/videography/posters/stay-weird.jpg",
         alt: "Teal wireframe cube around a shadowed face, with blurred stay weird text across the dark frame.",
@@ -2086,7 +2115,7 @@ export const site = {
       {
         title: "5 Centimeters Edit",
         year: "2026",
-        caption: "Edit",
+        caption: "Anime edit",
         src: "/work/videography/5-centimeters-edit.mp4",
         poster: "/work/videography/posters/5-centimeters-edit.jpg",
         alt: "Anime-style sunlit stone pavement, cracked and dappled with leaf shadows and a soft pink light leak.",
@@ -2094,15 +2123,15 @@ export const site = {
       {
         title: "Low Sun",
         year: "2026",
-        caption: "3D",
+        caption: "3D animation",
         src: "/work/videography/red-horizon.mp4",
         poster: "/work/videography/posters/red-horizon.jpg",
         alt: "Dark angular craft flying low over pink dunes toward a pale sun, light streaks in an orange sky.",
       },
       {
-        title: "Warhols Flowers",
+        title: "Warhol's Flowers",
         year: "2024",
-        caption: "Pop",
+        caption: "Motion graphics",
         src: "/work/videography/Warhols Flowers.mp4",
         poster: "/work/videography/posters/warhols-flowers.jpg",
         alt: "Four-panel grid of the same roses tinted red, blue, magenta and green in matching frames on black.",
@@ -2110,15 +2139,15 @@ export const site = {
       {
         title: "Euphoric Chant",
         year: "2024",
-        caption: "Lift",
+        caption: "Motion graphics",
         src: "/work/videography/Euphoric Chant.mp4",
         poster: "/work/videography/posters/euphoric-chant.jpg",
         alt: "White silhouette tumbling through dark blue space toward a bright glowing light.",
       },
       {
-        title: "Dont Waste our Runaway",
+        title: "Don't Waste Our Runaway",
         year: "2024",
-        caption: "Run",
+        caption: "Video edit",
         src: "/work/videography/Dont Waste our Runaway.mp4",
         poster: "/work/videography/posters/dont-waste-our-runaway.jpg",
         alt: "Silhouette carrying another person away from a fiery red and orange explosion at night.",
@@ -2126,7 +2155,7 @@ export const site = {
       {
         title: "80s Weeknd",
         year: "2024",
-        caption: "Neon",
+        caption: "Video edit",
         src: "/work/videography/80s Weeknd.mp4",
         poster: "/work/videography/posters/80s-weeknd.jpg",
         alt: "Blurred silhouette and a diagonal shadow cast across a glowing red wall.",
@@ -2134,7 +2163,7 @@ export const site = {
       {
         title: "Endless LoFi",
         year: "2024",
-        caption: "Drift",
+        caption: "Video edit",
         src: "/work/videography/Endless LoFi.mp4",
         poster: "/work/videography/posters/endless-lofi.jpg",
         alt: "Woman standing among commuters in a crowded subway car, seen through its open doors.",
@@ -2142,7 +2171,7 @@ export const site = {
       {
         title: "Journeys",
         year: "2024",
-        caption: "Road",
+        caption: "Video edit",
         src: "/work/videography/Journeys.mp4",
         poster: "/work/videography/posters/journeys.jpg",
         alt: "Rain-slick street at night reflecting streaks of neon pink, red and violet light.",
@@ -2150,7 +2179,7 @@ export const site = {
       {
         title: "Flows",
         year: "2024",
-        caption: "Pulse",
+        caption: "Video edit",
         src: "/work/videography/Flows.mp4",
         poster: "/work/videography/posters/flows.jpg",
         alt: "Group walking toward a green house under a blazing orange sunset sky.",
@@ -2158,7 +2187,7 @@ export const site = {
       {
         title: "Razorhouse Go",
         year: "2024",
-        caption: "Cut",
+        caption: "Video edit",
         src: "/work/videography/Razorhouse Go.mp4",
         poster: "/work/videography/posters/razorhouse-go.jpg",
         alt: "Two young women asleep under dark blankets on pale pillows, with Razorhouse text in the corner.",
@@ -2221,14 +2250,20 @@ export const site = {
   },
 
   contact: {
-    heading: "Let's make something that remembers",
-    body: "Brand, print, merch, or a night-sky personal piece — say what you're building.",
+    heading: "Have a project in mind?",
+    body: "Print, signage, apparel, brand, or a personal piece. Tell me what you're building and I'll get back to you.",
     cta: "Email me",
   },
 
+  /**
+   * Footer and contact links. Entries with an empty href are skipped, so a
+   * new link can be added here before its URL is known.
+   */
   social: [
-    { label: "GitHub", href: "https://github.com/shonarip" },
     { label: "Email", href: "mailto:shonarip@gmail.com" },
+    { label: "Instagram", href: "https://www.instagram.com/the_blackwall.st" },
+    { label: "YouTube", href: "https://www.youtube.com/@theblackwallst97" },
+    { label: "GitHub", href: "https://github.com/shonarip" },
   ],
 } as const;
 

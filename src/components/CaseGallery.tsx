@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { ProjectGallery } from "./ProjectGallery";
+import { altFor } from "@/content/alt";
 import { imgProps, SIZES } from "@/content/img";
+import { ProjectGallery } from "./ProjectGallery";
 
 type Props = {
   title: string;
@@ -13,23 +14,17 @@ export function CaseGallery({ title, images }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   if (!images.length) {
-    return (
-      <p className="font-sans text-sm text-ink-muted">No images in this set yet.</p>
-    );
+    return <p className="t-small">No images in this set yet.</p>;
   }
 
   return (
     <>
-      <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
-        <p className="font-mono text-2xs uppercase tracking-micro text-ink-faint">
-          {images.length} images
+      <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+        <p className="t-small">
+          {images.length} {images.length === 1 ? "image" : "images"}
         </p>
-        <button
-          type="button"
-          onClick={() => setOpenIndex(0)}
-          className="font-mono text-xs uppercase tracking-micro text-accent transition-colors hover:text-accent-soft"
-        >
-          Open gallery →
+        <button type="button" onClick={() => setOpenIndex(0)} className="link-quiet">
+          View full size <span aria-hidden="true">→</span>
         </button>
       </div>
 
@@ -39,14 +34,14 @@ export function CaseGallery({ title, images }: Props) {
             <button
               type="button"
               onClick={() => setOpenIndex(i)}
-              className="group relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-ink/15 bg-canvas/40"
-              aria-label={`${title} image ${i + 1}`}
+              className="group relative block aspect-[4/5] w-full overflow-hidden rounded-md border border-ink/10 bg-canvas-soft transition-colors hover:border-accent"
+              aria-label={`View ${title}, image ${i + 1} of ${images.length}, full size`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 {...imgProps(src, SIZES.card)}
-                alt=""
-                className="h-full w-full object-contain object-center opacity-90 transition group-hover:opacity-100"
+                alt={altFor(src, `${title}, image ${i + 1} of ${images.length}`)}
+                className="h-full w-full object-contain object-center"
                 draggable={false}
               />
             </button>

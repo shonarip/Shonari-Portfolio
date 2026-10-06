@@ -1,8 +1,11 @@
 import { site } from "./site";
 
-/** Social links minus any Adobe Portfolio destination (site never points to Adobe). */
+/**
+ * Social links minus any Adobe Portfolio destination (site never points to Adobe)
+ * and any entry whose URL has not been filled in yet.
+ */
 export const socialLinks = site.social.filter(
-  (l) => !/myportfolio\.com|adobe/i.test(l.href + " " + l.label),
+  (l) => (l.href as string) !== "" &&!/myportfolio\.com|adobe/i.test(l.href + " " + l.label),
 );
 
 /** Header nav from site.ts; hash links always resolve to the home page. */

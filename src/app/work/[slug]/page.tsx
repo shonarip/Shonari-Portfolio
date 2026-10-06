@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { NightSky } from "@/components/NightSky";
 import { CaseGallery } from "@/components/CaseGallery";
+import { CaseFacts } from "@/components/CaseFacts";
 import { site } from "@/content/site";
 
 type PageProps = {
@@ -39,7 +40,7 @@ export async function generateMetadata({
     return { title: site.name };
   }
   return {
-    title: `${project.title} — ${site.name}`,
+    title: project.title,
     description: project.description,
   };
 }
@@ -60,69 +61,50 @@ export default async function WorkCasePage({ params }: PageProps) {
     <>
       <NightSky />
       <Header />
-      <main className="mx-auto max-w-5xl px-4 pb-20 pt-28 sm:px-6 lg:px-8">
-        <Link
-          href="/work"
-          className="inline-flex min-h-11 items-center font-mono text-xs uppercase tracking-micro text-ink-muted transition-colors hover:text-accent"
-        >
-          ← All works
+      <main id="main" className="container-page pb-8 pt-28 md:pt-32">
+        <Link href="/work" className="link-quiet">
+          <span aria-hidden="true">←</span> All works
         </Link>
 
         <article className="mt-8">
-          <p className="font-mono text-2xs uppercase tracking-micro text-ink-faint">
-            {project.lane} · {project.role} · {project.year}
+          <p className="t-eyebrow">
+            {project.lane} · {project.caption}
           </p>
-          <h1 className="mt-3 font-display text-4xl tracking-tight text-ink sm:text-5xl">
-            {project.title}
-          </h1>
-          <p className="mt-2 font-mono text-xs uppercase tracking-micro text-accent/80">
-            {project.caption}
-          </p>
-          <p className="mt-6 max-w-2xl font-sans text-base leading-relaxed text-ink-soft sm:text-lg">
-            {project.description}
-          </p>
+          <h1 className="t-h1 mt-3">{project.title}</h1>
+          <p className="t-lead mt-5 max-w-2xl">{project.description}</p>
 
-          {"caseStudy" in project && project.caseStudy && (
-            <dl className="mt-8 grid max-w-3xl gap-x-8 gap-y-5 border-y border-ink/10 py-6 sm:grid-cols-3">
-              <div>
-                <dt className="micro-label text-ink-faint">Client</dt>
-                <dd className="mt-1.5 font-sans text-sm leading-relaxed text-ink-soft">{project.caseStudy.client}</dd>
-              </div>
-              <div>
-                <dt className="micro-label text-ink-faint">Role</dt>
-                <dd className="mt-1.5 font-sans text-sm leading-relaxed text-ink-soft">{project.caseStudy.role}</dd>
-              </div>
-              <div>
-                <dt className="micro-label text-ink-faint">Delivered for</dt>
-                <dd className="mt-1.5 font-sans text-sm leading-relaxed text-ink-soft">
-                  {project.caseStudy.deliveredFor.join(", ")}
-                </dd>
-              </div>
-              <p className="font-sans text-sm leading-relaxed text-ink-soft sm:col-span-3 sm:text-base">
-                {project.caseStudy.summary}
-              </p>
-            </dl>
+          {"caseStudy" in project && project.caseStudy ? (
+            <div className="mt-10 max-w-3xl">
+              <CaseFacts caseStudy={project.caseStudy} year={project.year} />
+              <p className="mt-6 text-lg leading-relaxed text-ink-soft">{project.caseStudy.summary}</p>
+            </div>
+          ) : (
+            <p className="t-small mt-6">
+              {project.role} · {project.year}
+            </p>
           )}
 
-          <div className="mt-10">
+          <div className="mt-12">
             <CaseGallery title={project.title} images={images} />
           </div>
         </article>
 
         {related.length > 0 && (
-          <aside className="mt-16 border-t border-ink/10 pt-8">
-            <p className="micro-label text-ink-faint">More in {project.lane}</p>
-            <ul className="mt-4 space-y-2">
+          <aside aria-labelledby="related-heading" className="mt-20 border-t border-ink/10 pt-10">
+            <h2 id="related-heading" className="t-h3">
+              More in {project.lane}
+            </h2>
+            <ul className="mt-4 divide-y divide-ink/10">
               {related.map((p) => (
                 <li key={p.slug}>
                   <Link
                     href={p.href}
-                    className="group flex items-baseline justify-between gap-4 py-2 font-mono text-xs uppercase tracking-micro text-ink-muted transition-colors hover:text-accent"
+                    className="group flex min-h-11 items-baseline justify-between gap-4 py-3"
                   >
-                    <span className="font-display text-base normal-case tracking-tight text-ink group-hover:text-accent">
+                    <span className="font-display text-lg font-bold tracking-tight text-ink transition-colors group-hover:text-accent">
                       {p.title}
                     </span>
-                    <span className="shrink-0 text-ink-faint">{p.year}</span>
+                    <span className="shrink-0 text-sm text-ink-muted">{p.year}</span>
                   </Link>
                 </li>
               ))}

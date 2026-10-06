@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { site } from "@/content/site";
 import variants from "@/content/img-variants.json";
@@ -17,7 +18,7 @@ function VideoCard({ item }: { item: VideoItem }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
-  // Square/portrait/4:3 sources (e.g. Serpent Skull, Cloud Fall) show whole frame on dark ground; no crop.
+  // Square/portrait sources show the whole frame on a dark ground; no crop.
   const [contain, setContain] = useState(false);
 
   useEffect(() => {
@@ -39,8 +40,8 @@ function VideoCard({ item }: { item: VideoItem }) {
   };
 
   return (
-    <article className="overflow-hidden rounded-sm border border-ink/15 bg-canvas/40">
-      <div className={`relative aspect-video ${contain ? "bg-[#050508]" : "bg-black/40"}`}>
+    <article className="card overflow-hidden">
+      <div className={`relative aspect-video ${contain ? "bg-black" : "bg-canvas-soft"}`}>
         {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
         <video
           ref={videoRef}
@@ -49,6 +50,7 @@ function VideoCard({ item }: { item: VideoItem }) {
           preload="none"
           playsInline
           controls={playing}
+          aria-label={`${item.title}. ${item.alt}`}
           onEnded={() => setPlaying(false)}
           onError={() => setFailed(true)}
         >
@@ -58,25 +60,23 @@ function VideoCard({ item }: { item: VideoItem }) {
           <button
             type="button"
             onClick={toggle}
-            className="absolute inset-0 flex items-center justify-center bg-black/25 transition hover:bg-black/35 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cool"
-            aria-label={`Play ${item.title}`}
+            className="absolute inset-0 flex items-center justify-center bg-black/25 transition hover:bg-black/35"
+            aria-label={failed ? `${item.title} is unavailable` : `Play ${item.title}`}
           >
-            <span className="inline-flex h-14 w-14 items-center justify-center rounded-full border border-ink/30 bg-canvas/70 font-mono text-xs uppercase tracking-micro text-ink backdrop-blur-sm">
+            <span className="inline-flex h-16 w-16 items-center justify-center rounded-full border border-ink/40 bg-canvas/75 text-sm font-medium text-ink backdrop-blur-sm">
               {failed ? "N/A" : "Play"}
             </span>
           </button>
         )}
       </div>
-      <div className="px-4 py-3">
+      <div className="px-5 py-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h3 className="font-display text-lg tracking-tight text-ink">{item.title}</h3>
-          <time className="font-mono text-2xs tracking-micro text-ink-faint" dateTime={item.year}>
+          <h3 className="font-display text-lg font-bold tracking-tight text-ink">{item.title}</h3>
+          <time className="text-sm text-ink-muted" dateTime={item.year}>
             {item.year}
           </time>
         </div>
-        <p className="mt-1 font-mono text-2xs uppercase tracking-micro text-accent/80">
-          {item.caption}
-        </p>
+        <p className="t-small mt-1">{item.caption}</p>
       </div>
     </article>
   );
@@ -84,9 +84,8 @@ function VideoCard({ item }: { item: VideoItem }) {
 
 export function VideographySection() {
   const curated = useMemo(() => {
-    const order = [...site.videography.homepageCurated];
     const byTitle = new Map(site.videography.items.map((i) => [i.title, i]));
-    return order
+    return site.videography.homepageCurated
       .map((t) => byTitle.get(t))
       .filter((i): i is VideoItem => Boolean(i));
   }, []);
@@ -95,35 +94,27 @@ export function VideographySection() {
     <section
       id="videography"
       aria-labelledby="videography-heading"
-      className="mx-auto max-w-[1400px] scroll-mt-24 px-4 py-14 sm:px-6 md:py-20 lg:px-8"
+      className="container-page section scroll-mt-20"
     >
-      <div className="mx-auto mb-10 max-w-2xl text-center md:mb-12">
-        <p className="micro-label text-ink-faint">{site.videography.heading}</p>
-        <h2
-          id="videography-heading"
-          className="mt-2 font-display text-3xl tracking-tight text-ink sm:text-4xl"
-        >
+      <div className="max-w-2xl">
+        <p className="t-eyebrow">{site.videography.heading}</p>
+        <h2 id="videography-heading" className="t-h2 mt-3">
           Motion
         </h2>
-        <p className="mt-4 font-sans text-base leading-relaxed text-ink-soft sm:text-lg">
-          {site.videography.intro}
-        </p>
+        <p className="t-lead mt-4">{site.videography.intro}</p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:gap-6">
+      <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
         {curated.map((item) => (
           <VideoCard key={item.title} item={item} />
         ))}
       </div>
 
-      <div className="mt-10 flex justify-center">
-        <a
-          href={site.videography.seeAll}
-          className="inline-flex items-center gap-2 border border-ink/20 bg-canvas/40 px-4 py-2 font-mono text-xs uppercase tracking-micro text-ink-soft transition-colors hover:border-accent/50 hover:text-accent"
-        >
+      <div className="mt-12">
+        <Link href={site.videography.seeAll} className="btn-secondary">
           See all videography
           <span aria-hidden="true">→</span>
-        </a>
+        </Link>
       </div>
     </section>
   );
