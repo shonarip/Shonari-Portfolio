@@ -3,20 +3,21 @@
 @tailwind utilities;
 
 /*
-  Design system
-  - One grid: .container-page (max 1200px, 20/32/40px gutters). Header, every section and the footer use it.
-  - One type scale: .t-display, .t-h1, .t-h2, .t-h3, .t-lead, body (16px), .t-small (14px), .t-eyebrow (13px).
-  - Text colors ink / ink-soft / ink-muted all pass WCAG AA on canvas.
+  Design system (Wildy-style structure, Shonari's own palette)
+  - Black canvas, IBM Plex Mono for UI and body, Instrument Serif for display type.
+  - One grid: .container-page. Header, sections and footer all align to it.
+  - Solid "paper" cards (pink, gray, blue) hold the featured work; text on them is near-black.
+  - Small uppercase mono is limited to nav, labels and tags, and never below 13px.
 */
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #0b0b0e;
+    background-color: #0a0a0a;
   }
 
   body {
-    @apply bg-transparent text-base leading-relaxed text-ink antialiased;
+    @apply bg-transparent text-[15px] leading-relaxed text-ink antialiased;
   }
 
   ::selection {
@@ -51,7 +52,7 @@
 @layer components {
   /* ---- Grid ---- */
   .container-page {
-    @apply mx-auto w-full max-w-[1200px] px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10;
   }
 
   .section {
@@ -60,45 +61,45 @@
 
   /* ---- Type scale ---- */
   .t-display {
-    @apply font-display font-extrabold tracking-tight text-ink;
-    font-size: clamp(2.75rem, 7.5vw, 5.25rem);
-    line-height: 1.02;
+    @apply font-display font-normal tracking-tight text-ink;
+    font-size: clamp(3.5rem, 11vw, 9rem);
+    line-height: 0.92;
   }
 
   .t-h1 {
-    @apply font-display font-bold tracking-tight text-ink;
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    line-height: 1.08;
+    @apply font-display font-normal tracking-tight text-ink;
+    font-size: clamp(2.75rem, 7vw, 5.5rem);
+    line-height: 0.98;
   }
 
   .t-h2 {
-    @apply font-display font-bold tracking-tight text-ink;
-    font-size: clamp(1.75rem, 3.4vw, 2.5rem);
-    line-height: 1.12;
+    @apply font-display font-normal tracking-tight text-ink;
+    font-size: clamp(2.25rem, 4.6vw, 3.75rem);
+    line-height: 1.02;
   }
 
   .t-h3 {
-    @apply font-display font-bold tracking-tight text-ink;
-    font-size: clamp(1.375rem, 2.2vw, 1.75rem);
-    line-height: 1.2;
+    @apply font-display font-normal tracking-tight text-ink;
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    line-height: 1.1;
   }
 
   .t-lead {
-    @apply text-lg leading-relaxed text-ink-soft md:text-xl;
+    @apply text-base leading-[1.75] text-ink-soft md:text-[17px];
   }
 
   .t-small {
-    @apply text-sm leading-relaxed text-ink-muted;
+    @apply text-2xs leading-relaxed text-ink-muted;
   }
 
-  /* The single small uppercase label style. Use it for section eyebrows only. */
+  /* Small uppercase label: nav, section labels, tags. 13px minimum. */
   .t-eyebrow {
-    @apply text-2xs font-medium uppercase tracking-micro text-accent;
+    @apply text-2xs font-medium uppercase tracking-micro text-ink-soft;
   }
 
   /* ---- Controls ---- */
   .btn {
-    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border px-6 text-base font-medium transition-colors;
+    @apply inline-flex min-h-12 items-center justify-center gap-2 border px-6 text-2xs font-semibold uppercase tracking-micro transition-colors;
   }
 
   .btn-primary {
@@ -106,21 +107,60 @@
   }
 
   .btn-secondary {
-    @apply btn border-ink/35 bg-transparent text-ink hover:border-accent hover:text-accent;
+    @apply btn border-ink/40 bg-transparent text-ink hover:border-accent hover:text-accent;
+  }
+
+  /* Button on a paper card */
+  .btn-dark {
+    @apply btn border-onpaper bg-onpaper text-ink hover:bg-transparent hover:text-onpaper;
   }
 
   .link-quiet {
-    @apply inline-flex min-h-11 items-center gap-1.5 text-base font-medium text-ink-soft underline decoration-ink/25 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
+    @apply inline-flex min-h-11 items-center gap-1.5 text-2xs font-medium uppercase tracking-micro text-ink-soft underline decoration-ink/25 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
   }
 
   .card {
-    @apply rounded-md border border-ink/10 bg-canvas-soft/70;
+    @apply border border-ink/15 bg-canvas-soft/70;
   }
 
   .media-placeholder {
     background-color: #1a1a1d;
     background-image: radial-gradient(#efe8e033 0.6px, transparent 0.6px);
     background-size: 10px 10px;
+  }
+
+  /* ---- Paper cards and folder tabs ---- */
+  .paper-pink { @apply bg-paper-pink text-onpaper; }
+  .paper-gray { @apply bg-paper-gray text-onpaper; }
+  .paper-blue { @apply bg-paper-blue text-onpaper; }
+
+  /* The label that sits on a card's top-left corner, cut on a diagonal. */
+  .folder-tab {
+    @apply inline-flex h-9 items-center pl-4 pr-9 text-2xs font-medium uppercase tracking-micro;
+    clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 100%, 0 100%);
+  }
+
+  /* Dashed inner frame with corner dots, used on the About card. */
+  .blueprint {
+    position: relative;
+  }
+  .blueprint::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px dashed rgba(10, 10, 10, 0.5);
+    pointer-events: none;
+  }
+  .blueprint::after {
+    content: "";
+    position: absolute;
+    inset: 11px;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 3px 3px, #0a0a0a 2.5px, transparent 3px) top left / 6px 6px no-repeat,
+      radial-gradient(circle at 3px 3px, #0a0a0a 2.5px, transparent 3px) top right / 6px 6px no-repeat,
+      radial-gradient(circle at 3px 3px, #0a0a0a 2.5px, transparent 3px) bottom left / 6px 6px no-repeat,
+      radial-gradient(circle at 3px 3px, #0a0a0a 2.5px, transparent 3px) bottom right / 6px 6px no-repeat;
   }
 }
 
@@ -159,8 +199,8 @@
   .still-bubble { animation: none; }
 }
 
-/* Landing skull: a quieter, contained element beside the intro. */
+/* Landing skull: the hero object. */
 .skull-box {
-  max-width: 600px;
+  max-width: 560px;
   margin-inline: auto;
 }

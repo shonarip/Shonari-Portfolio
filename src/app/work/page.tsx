@@ -329,9 +329,10 @@ export default function WorkIndexPage() {
         </Link>
 
         <header className="mb-10 mt-8">
-          <p className="t-eyebrow">Archive</p>
-          <h1 className="t-h1 mt-3">{site.workIndex.heading}</h1>
-          <p className="t-lead mt-4 max-w-2xl">{site.workIndex.intro}</p>
+          <h1 className="t-display">
+            Works <span className="text-ink-muted">Archive</span>
+          </h1>
+          <p className="t-lead mt-6 max-w-2xl">{site.workIndex.intro}</p>
         </header>
 
         <div
@@ -355,10 +356,10 @@ export default function WorkIndexPage() {
                   window.history.replaceState({}, "", url.toString());
                 }}
                 className={[
-                  "inline-flex min-h-11 items-center rounded-full border px-5 text-base font-medium transition-colors",
+                  "inline-flex min-h-11 items-center border px-5 text-2xs font-semibold uppercase tracking-micro transition-colors",
                   active
-                    ? "border-accent bg-accent text-canvas"
-                    : "border-ink/25 text-ink-soft hover:border-accent hover:text-accent",
+                    ? "border-paper-pink bg-paper-pink text-onpaper"
+                    : "border-ink/30 text-ink hover:border-accent hover:text-accent",
                 ].join(" ")}
               >
                 {lane}
@@ -380,7 +381,7 @@ export default function WorkIndexPage() {
             // 16:9 video posters show the whole frame on dark; square Serpent Skull still fills.
             const wide = row.kind === "video" && !row.image.includes("serpent-skull");
             const inner = (
-              <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-ink/10 bg-canvas-soft transition-colors group-hover:border-accent group-focus-visible:border-accent">
+              <div className="relative aspect-[4/5] overflow-hidden border border-ink/15 bg-canvas-soft transition-colors group-hover:border-accent group-focus-visible:border-accent">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   {...thumbProps(row.image)}
@@ -389,13 +390,13 @@ export default function WorkIndexPage() {
                   className={`h-full w-full ${wide ? "bg-black object-contain" : "object-cover"}`}
                 />
                 <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/55 to-transparent px-3 pb-3 pt-10 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100 [@media(hover:none)]:opacity-100">
-                  <p className="font-display text-base font-bold leading-tight tracking-tight text-ink">{row.title}</p>
+                  <p className="font-display text-base leading-tight tracking-tight text-ink">{row.title}</p>
                   <p className="mt-0.5 text-sm text-ink-soft">{row.lane}</p>
                 </div>
               </div>
             );
             const tile =
-              "group block w-full rounded-md text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cool";
+              "group block w-full text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cool";
             const open =
               row.kind === "still"
                 ? () => setStill(row)

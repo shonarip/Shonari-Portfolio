@@ -164,7 +164,7 @@ export function SkullTurntable() {
 
   return (
     <div className="skull-box group pointer-events-none relative z-0 mx-auto block aspect-square w-full overflow-visible">
-      <div className="absolute inset-0 opacity-[0.45] transition-opacity group-has-[a:hover]:opacity-70">
+      <div className="absolute inset-0 opacity-[0.92] transition-opacity group-has-[a:hover]:opacity-100">
       <picture
         className={[
           "pointer-events-none absolute inset-0 flex items-center justify-center transition-opacity duration-700",

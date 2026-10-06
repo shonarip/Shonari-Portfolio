@@ -101,7 +101,7 @@ export default async function WorkCasePage({ params }: PageProps) {
                     href={p.href}
                     className="group flex min-h-11 items-baseline justify-between gap-4 py-3"
                   >
-                    <span className="font-display text-lg font-bold tracking-tight text-ink transition-colors group-hover:text-accent">
+                    <span className="font-display text-lg tracking-tight text-ink transition-colors group-hover:text-accent">
                       {p.title}
                     </span>
                     <span className="shrink-0 text-sm text-ink-muted">{p.year}</span>

@@ -10,16 +10,16 @@ const config: Config = {
     extend: {
       colors: {
         canvas: {
-          DEFAULT: "#0b0b0e",
-          soft: "#131318",
-          muted: "#1b1b21",
+          DEFAULT: "#0a0a0a",
+          soft: "#141414",
+          muted: "#1d1d1d",
         },
-        // Text colors, all AA (4.5:1+) on canvas and canvas-soft.
+        // Text on the black canvas. All pass AA (4.5:1+).
         ink: {
-          DEFAULT: "#f2ece4",
-          soft: "#d2cac0",
-          muted: "#a9a198",
-          faint: "#a9a198",
+          DEFAULT: "#f4f0ea",
+          soft: "#d6d1c9",
+          muted: "#a9a49c",
+          faint: "#a9a49c",
         },
         accent: {
           DEFAULT: "#ff4d86",
@@ -29,18 +29,28 @@ const config: Config = {
           DEFAULT: "#8b9cff",
           soft: "#a8b4ff",
         },
+        // Solid "paper" colors for cards. Text on them is `onpaper`.
+        paper: {
+          pink: "#ff4d86",
+          gray: "#dcdcdc",
+          blue: "#9aa8ff",
+        },
+        onpaper: {
+          DEFAULT: "#0a0a0a",
+          soft: "#2a1118",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
-        serif: ["var(--font-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-sans)", "system-ui", "sans-serif"],
-        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)", "ui-monospace", "monospace"],
+        mono: ["var(--font-sans)", "ui-monospace", "monospace"],
+        serif: ["var(--font-display)", "Georgia", "serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
       },
       fontSize: {
         "2xs": ["0.8125rem", { lineHeight: "1.4" }],
       },
       letterSpacing: {
-        micro: "0.12em",
+        micro: "0.08em",
       },
     },
   },

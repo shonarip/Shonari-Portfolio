@@ -42,13 +42,22 @@ export const site = {
     context: "Currently a graphic designer at Biz Printing USA.",
     primary: { label: "View my work", href: "/portfolio" },
     secondary: { label: "Get in touch", href: "/contact" },
-    /** Quick paths into the archive, one per discipline. */
+    captionLeft: "A collection of design work",
+    captionRight: "Shonari Phillips 2026",
+    /** Words that cycle after "Shonari Phillips does". */
+    words: ["prints", "signage", "apparel"],
+    coordinates: "26.2129° N, 80.2498° W",
+    aboutLines: [
+      "I'm a graphic designer from Tamarac, FL, working across print, signage, apparel, and manga-inspired art.",
+      "I take each piece from first concept through production, designing for the sign, shirt, banner, or print it will become.",
+    ],
+    /** Numbered discipline list on the home page, each opening that lane in the archive. */
     lanes: [
-      { label: "Production", href: "/work?lane=Production" },
-      { label: "Print", href: "/work?lane=Print" },
-      { label: "Manga", href: "/work?lane=Manga" },
-      { label: "Photography", href: "/work?lane=Photography" },
-      { label: "Videography", href: "/work?lane=Videography" },
+      { label: "Production", note: "Signage, vehicle graphics, apparel", href: "/work?lane=Production" },
+      { label: "Print", note: "Original prints and posters", href: "/work?lane=Print" },
+      { label: "Manga", note: "Homage to Nihon and edits", href: "/work?lane=Manga" },
+      { label: "Photography", note: "Street, ruin, and quiet light", href: "/work?lane=Photography" },
+      { label: "Videography", note: "3D animation and video edits", href: "/work?lane=Videography" },
     ],
   },
 
@@ -69,10 +78,10 @@ export const site = {
   },
 
   nav: [
-    { label: "Work", href: "/portfolio" },
-    { label: "All works", href: "/work" },
+    { label: "Home", href: "/" },
+    { label: "Works", href: "/portfolio" },
     { label: "About", href: "/contact#about" },
-    { label: "Resume", href: "/resume.pdf?v=resume-oct5", external: true },
+    { label: "Contact", href: "/contact" },
   ],
 
   about: {

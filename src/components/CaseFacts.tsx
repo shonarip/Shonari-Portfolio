@@ -9,17 +9,22 @@ export type CaseStudyData = {
 /** Marked placeholder shown until the tools used on a project are filled in (see site.ts). */
 function Placeholder({ children }: { children: string }) {
   return (
-    <span
-      data-placeholder="true"
-      className="rounded-sm border border-dashed border-accent/60 px-1.5 py-0.5 text-sm italic text-ink-soft"
-    >
+    <span data-placeholder="true" className="border border-dashed border-current px-1.5 py-0.5 italic">
       {children}
     </span>
   );
 }
 
-/** The short case-study facts: context, role, tools, year. */
-export function CaseFacts({ caseStudy, year }: { caseStudy: CaseStudyData; year: string }) {
+/** The short case-study facts: context, role, tools, year. `tone="paper"` is for use on a solid paper card. */
+export function CaseFacts({
+  caseStudy,
+  year,
+  tone = "dark",
+}: {
+  caseStudy: CaseStudyData;
+  year: string;
+  tone?: "dark" | "paper";
+}) {
   const rows: { label: string; value: React.ReactNode }[] = [
     { label: "Client / context", value: caseStudy.client },
     { label: "My role", value: caseStudy.role },
@@ -33,12 +38,22 @@ export function CaseFacts({ caseStudy, year }: { caseStudy: CaseStudyData; year:
     rows.splice(1, 0, { label: "Delivered for", value: caseStudy.deliveredFor.join(", ") });
   }
 
+  const paper = tone === "paper";
+
   return (
-    <dl className="grid gap-x-8 gap-y-4 border-y border-ink/10 py-5 sm:grid-cols-2">
+    <dl
+      className={`grid gap-x-8 gap-y-4 border-y py-5 sm:grid-cols-2 ${
+        paper ? "border-dashed border-onpaper/60" : "border-ink/15"
+      }`}
+    >
       {rows.map((row) => (
         <div key={row.label}>
-          <dt className="t-eyebrow">{row.label}</dt>
-          <dd className="mt-1.5 text-base leading-relaxed text-ink-soft">{row.value}</dd>
+          <dt className={`text-2xs font-semibold uppercase tracking-micro ${paper ? "text-onpaper" : "text-ink"}`}>
+            {row.label}
+          </dt>
+          <dd className={`mt-1.5 text-[15px] leading-relaxed ${paper ? "text-onpaper-soft" : "text-ink-soft"}`}>
+            {row.value}
+          </dd>
         </div>
       ))}
     </dl>

@@ -78,7 +78,7 @@ export function AvailablePrintsSection() {
               type="button"
               onClick={() => setViewerIndex(i)}
               aria-label={`View print ${i + 1} of ${images.length} full size`}
-              className="block overflow-hidden rounded-md border border-ink/10 bg-canvas-soft transition-colors hover:border-accent"
+              className="block overflow-hidden border border-ink/10 bg-canvas-soft transition-colors hover:border-accent"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

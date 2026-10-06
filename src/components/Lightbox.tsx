@@ -73,7 +73,7 @@ export function Lightbox({ items, index, onClose, onIndex, label }: Props) {
     >
       <header className="flex items-start justify-between gap-4 border-b border-ink/10 px-5 py-3 sm:px-8">
         <div className="min-w-0">
-          <h2 className="truncate font-display text-lg font-bold tracking-tight text-ink sm:text-2xl">
+          <h2 className="truncate font-display text-2xl tracking-tight text-ink sm:text-3xl">
             {item.title}
           </h2>
           <p className="text-sm text-ink-muted">
@@ -85,7 +85,7 @@ export function Lightbox({ items, index, onClose, onIndex, label }: Props) {
           ref={closeRef}
           type="button"
           onClick={onClose}
-          className="inline-flex min-h-11 shrink-0 items-center rounded-full border border-ink/25 px-5 text-base font-medium text-ink transition-colors hover:border-accent hover:text-accent"
+          className="inline-flex min-h-11 shrink-0 items-center border border-ink/40 px-5 text-2xs font-semibold uppercase tracking-micro text-ink transition-colors hover:border-accent hover:text-accent"
         >
           Close
         </button>

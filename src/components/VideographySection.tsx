@@ -71,7 +71,7 @@ function VideoCard({ item }: { item: VideoItem }) {
       </div>
       <div className="px-5 py-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
-          <h3 className="font-display text-lg font-bold tracking-tight text-ink">{item.title}</h3>
+          <h3 className="font-display text-lg tracking-tight text-ink">{item.title}</h3>
           <time className="text-sm text-ink-muted" dateTime={item.year}>
             {item.year}
           </time>

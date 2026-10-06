@@ -34,7 +34,7 @@ export function CaseGallery({ title, images }: Props) {
             <button
               type="button"
               onClick={() => setOpenIndex(i)}
-              className="group relative block aspect-[4/5] w-full overflow-hidden rounded-md border border-ink/10 bg-canvas-soft transition-colors hover:border-accent"
+              className="group relative block aspect-[4/5] w-full overflow-hidden border border-ink/10 bg-canvas-soft transition-colors hover:border-accent"
               aria-label={`View ${title}, image ${i + 1} of ${images.length}, full size`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

@@ -1,20 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Sans, Syne } from "next/font/google";
+import { IBM_Plex_Mono, Instrument_Serif } from "next/font/google";
 import { site } from "@/content/site";
 import { AmbientAudio } from "@/components/AmbientAudio";
 import "./globals.css";
 
-const sans = DM_Sans({
+/** UI, labels and body copy. */
+const mono = IBM_Plex_Mono({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600"],
   variable: "--font-sans",
   display: "swap",
 });
 
-const display = Syne({
+/** Large display type. */
+const serif = Instrument_Serif({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: "400",
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
@@ -33,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b0b0e",
+  themeColor: "#0a0a0a",
 };
 
 export default function RootLayout({
@@ -42,11 +44,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${sans.variable} ${display.variable}`}>
+    <html lang="en" className={`${mono.variable} ${serif.variable}`}>
       <body className="min-h-screen font-sans">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-canvas"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-accent focus:px-4 focus:py-2 focus:text-canvas"
         >
           Skip to content
         </a>

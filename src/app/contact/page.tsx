@@ -54,21 +54,20 @@ export default function ContactPage() {
         <section
           id="about"
           aria-labelledby="about-heading"
-          className="mt-20 scroll-mt-24 border-t border-ink/10 pt-16 md:mt-28 md:pt-20"
+          className="mt-20 scroll-mt-16 md:mt-28"
         >
-          <div className="grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-4">
-              <p className="t-eyebrow">Background</p>
-              <h2 id="about-heading" className="t-h2 mt-3">
-                {site.about.heading}
-              </h2>
-            </div>
-            <div className="space-y-5 lg:col-span-8">
-              {site.about.paragraphs.map((p, i) => (
-                <p key={i} className={i === 0 ? "t-lead" : "text-lg leading-relaxed text-ink-soft"}>
-                  {p}
-                </p>
-              ))}
+          <div className="paper-pink blueprint px-7 py-12 sm:px-12 md:px-16 md:py-16">
+            <div className="grid gap-10 lg:grid-cols-12">
+              <div className="lg:col-span-4">
+                <h2 id="about-heading" className="t-h1 !text-onpaper">
+                  {site.about.heading}
+                </h2>
+              </div>
+              <div className="space-y-5 text-[17px] leading-[1.75] lg:col-span-8">
+                {site.about.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
           </div>
         </section>
