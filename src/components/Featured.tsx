@@ -27,7 +27,8 @@ function pad(n: number) {
 function FeaturedMedia({ item, onOpen }: { item: FeaturedItem; onOpen: () => void }) {
   const gallery = galleryFor(item);
   const support = gallery.length > 1 ? gallery.slice(1, 3) : [];
-  const frame = "border border-dashed border-onpaper/60 bg-onpaper/90";
+  // The frame hugs each image, so nothing is letterboxed: every preview keeps its own shape.
+  const frame = "border border-dashed border-onpaper/60 p-1.5";
 
   return (
     <div className="grid gap-3">
@@ -35,30 +36,30 @@ function FeaturedMedia({ item, onOpen }: { item: FeaturedItem; onOpen: () => voi
         type="button"
         onClick={onOpen}
         aria-label={`Open the ${item.title} gallery`}
-        className={`group relative block aspect-[4/3] w-full overflow-hidden ${frame}`}
+        className={`group mx-auto block w-fit max-w-full ${frame}`}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           {...imgProps(item.image, SIZES.card)}
           alt={altFor(item.image, item.title)}
-          className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-[1.02]"
+          className="block h-auto max-h-[70vh] w-auto max-w-full"
         />
       </button>
       {support.length > 0 && (
-        <ul className="grid grid-cols-2 gap-3">
+        <ul className="grid grid-cols-2 items-start gap-3">
           {support.map((src) => (
-            <li key={src}>
+            <li key={src} className="flex justify-center">
               <button
                 type="button"
                 onClick={onOpen}
                 aria-label={`Open the ${item.title} gallery`}
-                className={`relative block aspect-[4/3] w-full overflow-hidden ${frame}`}
+                className={`block w-fit max-w-full ${frame}`}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   {...imgProps(src, SIZES.thumb)}
                   alt={altFor(src, `${item.title}, additional work`)}
-                  className="h-full w-full object-contain object-center"
+                  className="block h-auto max-h-[360px] w-auto max-w-full"
                 />
               </button>
             </li>

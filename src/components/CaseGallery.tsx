@@ -28,20 +28,21 @@ export function CaseGallery({ title, images }: Props) {
         </button>
       </div>
 
-      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+      {/* Masonry: each preview keeps its own shape, so there are no bars and no cropping. */}
+      <ul className="columns-2 gap-3 sm:columns-3 lg:columns-4">
         {images.map((src, i) => (
-          <li key={src}>
+          <li key={src} className="mb-3 break-inside-avoid">
             <button
               type="button"
               onClick={() => setOpenIndex(i)}
-              className="group relative block aspect-[4/5] w-full overflow-hidden border border-ink/10 bg-canvas-soft transition-colors hover:border-accent"
+              className="group block w-full border border-ink/15 p-1 transition-colors hover:border-accent"
               aria-label={`View ${title}, image ${i + 1} of ${images.length}, full size`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                {...imgProps(src, SIZES.card)}
+                {...imgProps(src, SIZES.thumb)}
                 alt={altFor(src, `${title}, image ${i + 1} of ${images.length}`)}
-                className="h-full w-full object-contain object-center"
+                className="block h-auto w-full"
                 draggable={false}
               />
             </button>
