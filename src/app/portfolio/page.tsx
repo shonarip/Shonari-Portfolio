@@ -5,7 +5,7 @@ import { AvailablePrintsSection } from "@/components/AvailablePrintsSection";
 import { PhotographySection } from "@/components/PhotographySection";
 import { VideographySection } from "@/components/VideographySection";
 import { Footer } from "@/components/Footer";
-import { NightSky } from "@/components/NightSky";
+import { Backdrop } from "@/components/Backdrop";
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -23,7 +23,7 @@ const sectionLinks = [
 export default function PortfolioPage() {
   return (
     <>
-      <NightSky />
+      <Backdrop />
       <Header />
       <main id="main" className="pt-24 md:pt-28">
         <nav aria-label="On this page" className="container-page">

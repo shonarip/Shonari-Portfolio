@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { NightSky } from "@/components/NightSky";
+import { Backdrop } from "@/components/Backdrop";
 import { CaseGallery } from "@/components/CaseGallery";
 import { CaseFacts } from "@/components/CaseFacts";
 import { site } from "@/content/site";
@@ -59,7 +59,7 @@ export default async function WorkCasePage({ params }: PageProps) {
 
   return (
     <>
-      <NightSky />
+      <Backdrop />
       <Header />
       <main id="main" className="container-page pb-8 pt-28 md:pt-32">
         <Link href="/work" className="link-quiet">

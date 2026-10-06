@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { NightSky } from "@/components/NightSky";
+import { Backdrop } from "@/components/Backdrop";
 import { site } from "@/content/site";
 import { socialLinks } from "@/content/links";
 
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <NightSky />
+      <Backdrop />
       <Header />
       <main id="main" className="container-page pb-8 pt-28 md:pt-36">
         <section id="contact" aria-labelledby="contact-heading" className="max-w-3xl">

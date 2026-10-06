@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { NightSky } from "@/components/NightSky";
+import { Backdrop } from "@/components/Backdrop";
 import { Lightbox, type LightboxItem } from "@/components/Lightbox";
 import { altFor } from "@/content/alt";
 import { site } from "@/content/site";
@@ -321,7 +321,7 @@ export default function WorkIndexPage() {
 
   return (
     <>
-      <NightSky />
+      <Backdrop />
       <Header />
       <main id="main" className="container-page pb-8 pt-28 md:pt-32">
         <Link href={site.workIndex.backHref} className="link-quiet">

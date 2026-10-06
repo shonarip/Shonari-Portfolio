@@ -4,13 +4,13 @@ import { AboutCard } from "@/components/AboutCard";
 import { Featured } from "@/components/Featured";
 import { Disciplines } from "@/components/Disciplines";
 import { Footer } from "@/components/Footer";
-import { NightSky } from "@/components/NightSky";
+import { Backdrop } from "@/components/Backdrop";
 
 /** `/` opens on the hero, then introduces me, shows the featured work, and lists the disciplines. */
 export default function HomePage() {
   return (
     <>
-      <NightSky />
+      <Backdrop />
       <Header />
       <main id="main">
         <Hero />

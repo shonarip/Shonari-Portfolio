@@ -18,8 +18,8 @@ const config: Config = {
         ink: {
           DEFAULT: "#f4f0ea",
           soft: "#d6d1c9",
-          muted: "#a9a49c",
-          faint: "#a9a49c",
+          muted: "#bdb8b0",
+          faint: "#bdb8b0",
         },
         accent: {
           DEFAULT: "#ff4d86",
