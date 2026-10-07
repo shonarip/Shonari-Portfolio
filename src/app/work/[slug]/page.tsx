@@ -85,7 +85,11 @@ export default async function WorkCasePage({ params }: PageProps) {
           )}
 
           <div className="mt-12">
-            <CaseGallery title={project.title} images={images} />
+            <CaseGallery
+              title={project.title}
+              images={images}
+              groups={"groups" in project ? project.groups : undefined}
+            />
           </div>
         </article>
 
