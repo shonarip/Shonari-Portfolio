@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useRef, useState } from "react";
 import { site } from "@/content/site";
 import { altFor } from "@/content/alt";
@@ -45,6 +46,9 @@ export function AvailablePrintsSection() {
               Prints
             </h2>
             <p className="t-lead mt-4">{site.availablePrints.intro}</p>
+            <Link href="/work/prints" className="link-quiet mt-4">
+              View all prints, organized <span aria-hidden="true">→</span>
+            </Link>
           </div>
           <div className="flex gap-3">
             <button

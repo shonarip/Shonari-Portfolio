@@ -21,7 +21,6 @@ function galleryFor(project: (typeof site.projects)[number]): string[] {
 
 /** One-image case pages now live in /work lanes; their URLs forward there. */
 const MERGED_CASES: Record<string, string> = {
-  prints: "Print",
   branding: "Design",
   "professional-production": "Production",
   "eyes-of-the-beholder": "Design",

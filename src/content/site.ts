@@ -103,6 +103,60 @@ const physicalImages: string[] = [
   ...physicalGroups.flatMap((g) => g.images as readonly string[]).filter((src) => !physicalPreview.includes(src)),
 ];
 
+/** Homage to Nihon: images grouped by theme for the project page. */
+const HOM = "/work/homage/";
+const homageGroups = [
+  {
+    title: "Latest edits",
+    images: [HOM + "25-cyber-ranma.jpg", HOM + "26-4-ur-eyez.jpg", HOM + "27-mei-mei.jpg", HOM + "28-contained.jpg"],
+  },
+  {
+    title: "Samurai and swordsmen",
+    images: [HOM + "02.png", HOM + "09.png", HOM + "10.png", HOM + "12.png", HOM + "08.png"],
+  },
+  {
+    title: "Faces and expressions",
+    images: [HOM + "03.png", HOM + "04.png", HOM + "06.png", HOM + "07.png", HOM + "05.png", HOM + "13.png"],
+  },
+  {
+    title: "Marble and ink",
+    images: [HOM + "14.jpg", HOM + "15.jpg", HOM + "16.jpg", HOM + "17.jpg", HOM + "18.jpg", HOM + "20.png", HOM + "11.png"],
+  },
+  {
+    title: "Characters and portraits",
+    images: [HOM + "01.jpg", HOM + "21.jpg", HOM + "22.jpg", HOM + "23.png", HOM + "19.jpg", HOM + "24.png"],
+  },
+] as const;
+
+/** The three most striking pieces, shown first on the front page: bright color, a dramatic close-up, and a painterly scene. */
+const homagePreview: readonly string[] = [HOM + "25-cyber-ranma.jpg", HOM + "26-4-ur-eyez.jpg", HOM + "02.png"];
+const homageImages: string[] = [
+  ...homagePreview,
+  ...homageGroups.flatMap((g) => g.images as readonly string[]).filter((src) => !homagePreview.includes(src)),
+];
+
+/** Prints: the 17 original prints, grouped by theme for the project page. */
+const PRT = "/work/prints/carousel/";
+const printGroups = [
+  {
+    title: "Skulls and skeletons",
+    images: [PRT + "01.jpg", PRT + "02.jpg", PRT + "03.jpg", PRT + "15.jpg"],
+  },
+  {
+    title: "Cities and landscapes",
+    images: [PRT + "07.jpg", PRT + "08.jpg", PRT + "11.jpg", PRT + "16.jpg"],
+  },
+  {
+    title: "Figures and portraits",
+    images: [PRT + "05.jpg", PRT + "06.jpg", PRT + "09.jpg", PRT + "10.jpg", PRT + "14.jpg", PRT + "13.jpg"],
+  },
+  {
+    title: "Surreal and glitch",
+    images: [PRT + "04.jpg", PRT + "12.png", PRT + "17.jpg"],
+  },
+] as const;
+const printImages: string[] = printGroups.flatMap((g) => [...g.images]);
+
 export const site = {
   name: "Shonari Phillips",
   title: "Graphic Designer",
@@ -226,37 +280,8 @@ export const site = {
       tags: ["Manga", "Edit", "Japan"],
       href: "/work/homage-to-nihon",
       adobe: "https://shonarip.myportfolio.com/homage-to-nihon",
-      image: "/work/homage/thumb-fermenting.jpg",
-      images: [
-        "/work/homage/25-cyber-ranma.jpg",
-        "/work/homage/26-4-ur-eyez.jpg",
-        "/work/homage/27-mei-mei.jpg",
-        "/work/homage/28-contained.jpg",
-        "/work/homage/01.jpg",
-        "/work/homage/02.png",
-        "/work/homage/03.png",
-        "/work/homage/04.png",
-        "/work/homage/05.png",
-        "/work/homage/06.png",
-        "/work/homage/07.png",
-        "/work/homage/08.png",
-        "/work/homage/09.png",
-        "/work/homage/10.png",
-        "/work/homage/11.png",
-        "/work/homage/12.png",
-        "/work/homage/13.png",
-        "/work/homage/14.jpg",
-        "/work/homage/15.jpg",
-        "/work/homage/16.jpg",
-        "/work/homage/17.jpg",
-        "/work/homage/18.jpg",
-        "/work/homage/19.jpg",
-        "/work/homage/20.png",
-        "/work/homage/21.jpg",
-        "/work/homage/22.jpg",
-        "/work/homage/23.png",
-        "/work/homage/24.png",
-      ],
+      image: homageImages[0],
+      images: homageImages,
       cta: "View project",
     }
   ],
@@ -283,37 +308,9 @@ export const site = {
       tags: ["Manga", "Edit", "Japan"],
       href: "/work/homage-to-nihon",
       adobe: "https://shonarip.myportfolio.com/homage-to-nihon",
-      image: "/work/homage/thumb-fermenting.jpg",
-      images: [
-        "/work/homage/25-cyber-ranma.jpg",
-        "/work/homage/26-4-ur-eyez.jpg",
-        "/work/homage/27-mei-mei.jpg",
-        "/work/homage/28-contained.jpg",
-        "/work/homage/01.jpg",
-        "/work/homage/02.png",
-        "/work/homage/03.png",
-        "/work/homage/04.png",
-        "/work/homage/05.png",
-        "/work/homage/06.png",
-        "/work/homage/07.png",
-        "/work/homage/08.png",
-        "/work/homage/09.png",
-        "/work/homage/10.png",
-        "/work/homage/11.png",
-        "/work/homage/12.png",
-        "/work/homage/13.png",
-        "/work/homage/14.jpg",
-        "/work/homage/15.jpg",
-        "/work/homage/16.jpg",
-        "/work/homage/17.jpg",
-        "/work/homage/18.jpg",
-        "/work/homage/19.jpg",
-        "/work/homage/20.png",
-        "/work/homage/21.jpg",
-        "/work/homage/22.jpg",
-        "/work/homage/23.png",
-        "/work/homage/24.png",
-      ],
+      image: homageImages[0],
+      images: homageImages,
+      groups: homageGroups,
     },
     {
       slug: "eyes-of-the-beholder",
@@ -393,11 +390,13 @@ export const site = {
       lane: "Print",
       featured: false,
       description:
-        "Solo print work — the still pieces that live off-screen.",
+        "Original pieces collected over time, all available as prints.",
       tags: ["Print", "Archive"],
       href: "/work/prints",
       adobe: "https://shonarip.myportfolio.com/solo-work",
-      image: "/work/manga2/Blue_Hues.jpg",
+      image: printImages[0],
+      images: printImages,
+      groups: printGroups,
     },
   ],
 
