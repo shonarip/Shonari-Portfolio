@@ -1,0 +1,16 @@
+{
+  // Cloudflare: static site served from the Next.js export in out/.
+  // Build first with the production variables, then run `npx wrangler deploy --config wrangler.jsonc`:
+  //   NEXT_PUBLIC_MEDIA_BASE=https://media.nariportfolio.com NEXT_PUBLIC_SITE_URL=https://nariportfolio.com npm run build
+  "name": "nariportfolio",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "nariportfolio.com", "custom_domain": true },
+    { "pattern": "www.nariportfolio.com", "custom_domain": true }
+  ]
+}

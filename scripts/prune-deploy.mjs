@@ -13,12 +13,15 @@ if (!fs.existsSync(OUT)) {
   process.exit(0);
 }
 
+// Videos are served from R2 (media.<domain>), so they never ship with the site itself.
+const isVideo = (p) => p.startsWith("out/work/videography/") && p.toLowerCase().endsWith(".mp4");
+
 const removed = [];
 (function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
     const p = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(p);
-    else if (fs.statSync(p).size > LIMIT) {
+    else if (fs.statSync(p).size > LIMIT || isVideo(p.split(path.sep).join("/"))) {
       removed.push([p.split(path.sep).join("/"), fs.statSync(p).size]);
       fs.rmSync(p);
     }
@@ -26,4 +29,4 @@ const removed = [];
 })(OUT);
 
 for (const [p, size] of removed) console.log(`prune-deploy: left out ${(size / 1048576).toFixed(1)} MB ${p}`);
-console.log(`prune-deploy: ${removed.length} file(s) over 25 MiB left out of out/`);
+console.log(`prune-deploy: ${removed.length} file(s) (over 25 MiB, or videos served from R2) left out of out/`);

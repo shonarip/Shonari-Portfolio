@@ -33,7 +33,15 @@ function VideoCard({ item }: { item: VideoItem }) {
     const el = videoRef.current;
     if (!el || failed) return;
     if (el.paused) {
-      void el.play().then(() => setPlaying(true)).catch(() => setFailed(true));
+      void el
+        .play()
+        .then(() => setPlaying(true))
+        .catch((err: unknown) => {
+          // A quick pause interrupts play() (AbortError) and a blocked autoplay is NotAllowedError.
+          // Neither means the video is broken, so only a real load failure shows "N/A".
+          const name = err instanceof DOMException ? err.name : "";
+          if (name !== "AbortError" && name !== "NotAllowedError") setFailed(true);
+        });
     } else {
       el.pause();
       setPlaying(false);

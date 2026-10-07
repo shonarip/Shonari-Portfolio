@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && node scripts/prune-deploy.mjs",
+    "deploy:site": "node scripts/deploy.mjs",
     "start": "next start",
     "lint": "next lint"
   },
