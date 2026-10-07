@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <radialGradient id="glowd" cx="0.5" cy="0.53" r="0.5">
+      <stop offset="0.4" stop-color="#ff4d86" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#ff4d86" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="16" cy="16.5" r="15.6" fill="url(#glowd)"/>
+  <polygon points="16.00,5.60 19.06,12.79 26.84,13.48 20.95,18.61 22.70,26.22 16.00,22.20 9.30,26.22 11.05,18.61 5.16,13.48 12.94,12.79" fill="none" stroke="#ffffff" stroke-opacity="0.8" stroke-width="3.6" stroke-linejoin="round"/>
+  <polygon points="16.00,5.60 19.06,12.79 26.84,13.48 20.95,18.61 22.70,26.22 16.00,22.20 9.30,26.22 11.05,18.61 5.16,13.48 12.94,12.79" fill="#7a3bd8" stroke="#0a0a0a" stroke-width="1.5" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 12.94,12.79 16.00,5.60" fill="#ffd6e5" stroke="#ffd6e5" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 19.06,12.79 16.00,5.60" fill="#f95792" stroke="#f95792" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 19.06,12.79 26.84,13.48" fill="#d74694" stroke="#d74694" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 20.95,18.61 26.84,13.48" fill="#7832bf" stroke="#7832bf" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 20.95,18.61 22.70,26.22" fill="#6030cd" stroke="#6030cd" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 16.00,22.20 22.70,26.22" fill="#7332c2" stroke="#7332c2" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 16.00,22.20 9.30,26.22" fill="#9936ac" stroke="#9936ac" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 11.05,18.61 9.30,26.22" fill="#f45493" stroke="#f45493" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 11.05,18.61 5.16,13.48" fill="#ff8bb3" stroke="#ff8bb3" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,17.00 12.94,12.79 5.16,13.48" fill="#ffe4ee" stroke="#ffe4ee" stroke-width="0.3" stroke-linejoin="round"/>
+  <polygon points="16.00,5.60 19.06,12.79 26.84,13.48 20.95,18.61 22.70,26.22 16.00,22.20 9.30,26.22 11.05,18.61 5.16,13.48 12.94,12.79" fill="none" stroke="#0a0a0a" stroke-opacity="0.9" stroke-width="1.2" stroke-linejoin="round"/>
+  <ellipse cx="12.70" cy="13.40" rx="1.70" ry="0.90" transform="rotate(-48 12.70 13.40)" fill="#ffffff" fill-opacity="0.9"/>
+  <circle cx="16" cy="17" r="0.9" fill="#ffffff" fill-opacity="0.75"/>
+  
+</svg>

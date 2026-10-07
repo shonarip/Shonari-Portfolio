@@ -29,15 +29,27 @@
   }
 }
 
-/* Custom cursor — E crescent tip, static. Fine pointer only. */
+/*
+  Custom cursor: a chrome star. Fine pointer only.
+  The hotspot (16 17) is the star's center. A sharper 2x copy is used on high-resolution screens.
+  Over links and buttons the star grows and gains two sparkles. Its dark outline and white edge
+  keep it visible on black, pink, gray and white. The old crescent files are still in the cursor folder.
+*/
 @media (hover: hover) and (pointer: fine) {
   body {
-    cursor: url("/work/ui/cursor/crescent-tip.png") 15 3, auto;
+    cursor: url("/work/ui/cursor/chrome-star.png") 16 17, auto;
+    cursor: image-set(
+        url("/work/ui/cursor/chrome-star.png") 1x,
+        url("/work/ui/cursor/chrome-star@2x.png") 2x
+      )
+      16 17,
+      auto;
   }
 
   a,
   button,
   [role="button"],
+  [role="tab"],
   summary,
   label[for],
   input[type="button"],
@@ -45,7 +57,13 @@
   input[type="reset"],
   select,
   .cursor-pointer {
-    cursor: url("/work/ui/cursor/crescent-tip.png") 15 3, pointer;
+    cursor: url("/work/ui/cursor/chrome-star-link.png") 16 17, pointer;
+    cursor: image-set(
+        url("/work/ui/cursor/chrome-star-link.png") 1x,
+        url("/work/ui/cursor/chrome-star-link@2x.png") 2x
+      )
+      16 17,
+      pointer;
   }
 }
 
