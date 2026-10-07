@@ -40,7 +40,7 @@
     cursor: url("/work/ui/cursor/chrome-star.png") 16 17, auto;
     cursor: image-set(
         url("/work/ui/cursor/chrome-star.png") 1x,
-        url("/work/ui/cursor/chrome-star@2x.png") 2x
+        url("/work/ui/cursor/chrome-star-2x.png") 2x
       )
       16 17,
       auto;
@@ -60,7 +60,7 @@
     cursor: url("/work/ui/cursor/chrome-star-link.png") 16 17, pointer;
     cursor: image-set(
         url("/work/ui/cursor/chrome-star-link.png") 1x,
-        url("/work/ui/cursor/chrome-star-link@2x.png") 2x
+        url("/work/ui/cursor/chrome-star-link-2x.png") 2x
       )
       16 17,
       pointer;
