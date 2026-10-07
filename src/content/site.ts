@@ -172,7 +172,7 @@ export const site = {
   /** All Works tabs only — Design lane projects under All, not a separate tab (Chief 2026-09-18) */
   workFilters: ["Production", "Manga", "Print", "Photography", "Videography"] as const,
 
-  resume: "/resume.pdf?v=resume-oct5",
+  resume: "/resume.pdf?v=resume-nariportfolio",
 
   /** First screen: name, what I do, and a clear path to the work. */
   hero: {
