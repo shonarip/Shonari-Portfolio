@@ -2278,8 +2278,8 @@ export const site = {
         year: "2026",
         caption: "3D animation",
         src: "/work/videography/serpent-skull.mp4",
-        poster: "/work/videography/posters/serpent-skull.jpg",
-        alt: "White 3D skull in profile on dark navy, a small snake slithering through a crack in its crown.",
+        poster: "/work/videography/posters/serpent-skull-fire.jpg",
+        alt: "White 3D skull turning on dark navy as a snake slithers out of a crack in its crown and coils around it in flames, the eye sockets burning.",
       },
       {
         title: "Stay Weird",
