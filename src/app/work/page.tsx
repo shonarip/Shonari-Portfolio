@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Backdrop } from "@/components/Backdrop";
 import { Lightbox, type LightboxItem } from "@/components/Lightbox";
+import { VideoPlayer, type VideoPlayerItem } from "@/components/VideoPlayer";
 import { altFor } from "@/content/alt";
 import { mediaUrl } from "@/content/media";
 import { site } from "@/content/site";
@@ -128,6 +129,8 @@ type ArchiveRow =
       image: string;
       href: string;
       external: false;
+      /** Position in site.videography.items, for the video player. */
+      stillIndex: number;
     };
 
 function altOf(item: object): string | undefined {
@@ -154,6 +157,7 @@ export default function WorkIndexPage() {
   const [printIndex, setPrintIndex] = useState<number | null>(null);
   const [mangaIndex, setMangaIndex] = useState<number | null>(null);
   const [productionIndex, setProductionIndex] = useState<number | null>(null);
+  const [videoIndex, setVideoIndex] = useState<number | null>(null);
   const [showAll, setShowAll] = useState(false);
 
   const photos = site.photography.items;
@@ -170,6 +174,14 @@ export default function WorkIndexPage() {
     ),
   ].filter((it) => !DROP_DUPES.has(it.image)) as unknown as typeof site.mangaArchive.items;
   const productions = site.productionArchive.items;
+  // Videos play in the in-page player, so a visitor can always close them and stay on the site.
+  const videoItems: VideoPlayerItem[] = site.videography.items.map((item) => ({
+    src: item.src,
+    poster: item.poster,
+    title: item.title,
+    alt: item.alt,
+    meta: `${item.caption} · ${item.year}`,
+  }));
 
   useEffect(() => {
     const fromUrl = readLaneParam();
@@ -288,7 +300,7 @@ export default function WorkIndexPage() {
       stillIndex: i,
     }));
 
-    const videos: ArchiveRow[] = site.videography.items.map((item) => ({
+    const videos: ArchiveRow[] = site.videography.items.map((item, i) => ({
       kind: "video" as const,
       key: `video-${item.title}`,
       title: item.title,
@@ -299,6 +311,7 @@ export default function WorkIndexPage() {
       image: item.poster,
       href: mediaUrl(item.src),
       external: false as const,
+      stillIndex: i,
     }));
 
     // Archive stills first so each image keeps the in-page viewer; a project card
@@ -408,7 +421,9 @@ export default function WorkIndexPage() {
                       ? () => setMangaIndex(row.stillIndex)
                       : row.kind === "production"
                         ? () => setProductionIndex(row.stillIndex)
-                        : null;
+                        : row.kind === "video"
+                          ? () => setVideoIndex(row.stillIndex)
+                          : null;
 
             return (
               <li key={row.key}>
@@ -417,11 +432,13 @@ export default function WorkIndexPage() {
                     type="button"
                     onClick={open ?? undefined}
                     className={tile}
-                    aria-label={`View ${row.title} (${row.lane}) full size`}
+                    aria-label={
+                      row.kind === "video" ? `Play ${row.title} (video)` : `View ${row.title} (${row.lane}) full size`
+                    }
                   >
                     {inner}
                   </button>
-                ) : row.external || row.kind === "video" ? (
+                ) : row.external ? (
                   <a
                     href={row.href}
                     target={row.external ? "_blank" : undefined}
@@ -480,6 +497,12 @@ export default function WorkIndexPage() {
         index={mangaIndex}
         onIndex={setMangaIndex}
         onClose={() => setMangaIndex(null)}
+      />
+      <VideoPlayer
+        items={videoItems}
+        index={videoIndex}
+        onIndex={setVideoIndex}
+        onClose={() => setVideoIndex(null)}
       />
       <Lightbox
         label="Production"

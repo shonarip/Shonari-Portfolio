@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { site } from "@/content/site";
 import variants from "@/content/img-variants.json";
-import { mediaUrl } from "@/content/media";
+import { VideoPlayer, type VideoPlayerItem } from "./VideoPlayer";
 
 type VideoItem = (typeof site.videography.items)[number];
 
@@ -14,12 +14,10 @@ function posterSrc(src?: string) {
   return (variants as string[]).includes(src) ? src.replace(/\.(jpe?g|png)$/i, "-1800.webp") : src;
 }
 
-function VideoCard({ item }: { item: VideoItem }) {
+/** A poster card. Pressing it opens the video in the player, which can always be closed. */
+function VideoCard({ item, onPlay }: { item: VideoItem; onPlay: () => void }) {
   const poster = posterSrc(item.poster);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-  const [failed, setFailed] = useState(false);
-  // Square/portrait sources show the whole frame on a dark ground; no crop.
+  // Square/portrait posters show the whole frame on a dark ground; no crop.
   const [contain, setContain] = useState(false);
 
   useEffect(() => {
@@ -29,55 +27,30 @@ function VideoCard({ item }: { item: VideoItem }) {
     img.src = poster;
   }, [poster]);
 
-  const toggle = () => {
-    const el = videoRef.current;
-    if (!el || failed) return;
-    if (el.paused) {
-      void el
-        .play()
-        .then(() => setPlaying(true))
-        .catch((err: unknown) => {
-          // A quick pause interrupts play() (AbortError) and a blocked autoplay is NotAllowedError.
-          // Neither means the video is broken, so only a real load failure shows "N/A".
-          const name = err instanceof DOMException ? err.name : "";
-          if (name !== "AbortError" && name !== "NotAllowedError") setFailed(true);
-        });
-    } else {
-      el.pause();
-      setPlaying(false);
-    }
-  };
-
   return (
     <article className="card overflow-hidden">
-      <div className={`relative aspect-video ${contain ? "bg-black" : "bg-canvas-soft"}`}>
-        {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
-        <video
-          ref={videoRef}
-          className={`h-full w-full ${contain ? "object-contain" : "object-cover"}`}
-          poster={poster}
-          preload="none"
-          playsInline
-          controls={playing}
-          aria-label={`${item.title}. ${item.alt}`}
-          onEnded={() => setPlaying(false)}
-          onError={() => setFailed(true)}
-        >
-          <source src={mediaUrl(item.src)} type="video/mp4" />
-        </video>
-        {!playing && (
-          <button
-            type="button"
-            onClick={toggle}
-            className="absolute inset-0 flex items-center justify-center bg-black/25 transition hover:bg-black/35"
-            aria-label={failed ? `${item.title} is unavailable` : `Play ${item.title}`}
-          >
-            <span className="inline-flex h-16 w-16 items-center justify-center rounded-full border border-ink/40 bg-canvas/75 text-sm font-medium text-ink backdrop-blur-sm">
-              {failed ? "N/A" : "Play"}
-            </span>
-          </button>
+      <button
+        type="button"
+        onClick={onPlay}
+        className={`group relative block aspect-video w-full ${contain ? "bg-black" : "bg-canvas-soft"}`}
+        aria-label={`Play ${item.title}`}
+      >
+        {poster && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={poster}
+            alt=""
+            loading="lazy"
+            decoding="async"
+            className={`h-full w-full ${contain ? "object-contain" : "object-cover"}`}
+          />
         )}
-      </div>
+        <span className="absolute inset-0 flex items-center justify-center bg-black/25 transition group-hover:bg-black/35">
+          <span className="inline-flex h-16 w-16 items-center justify-center rounded-full border border-ink/40 bg-canvas/75 text-sm font-medium text-ink backdrop-blur-sm">
+            Play
+          </span>
+        </span>
+      </button>
       <div className="px-5 py-4">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <h3 className="font-display text-lg tracking-tight text-ink">{item.title}</h3>
@@ -92,12 +65,25 @@ function VideoCard({ item }: { item: VideoItem }) {
 }
 
 export function VideographySection() {
+  const [playing, setPlaying] = useState<number | null>(null);
   const curated = useMemo(() => {
     const byTitle = new Map(site.videography.items.map((i) => [i.title, i]));
     return site.videography.homepageCurated
       .map((t) => byTitle.get(t))
       .filter((i): i is VideoItem => Boolean(i));
   }, []);
+
+  const playerItems: VideoPlayerItem[] = useMemo(
+    () =>
+      curated.map((item) => ({
+        src: item.src,
+        poster: posterSrc(item.poster),
+        title: item.title,
+        alt: item.alt,
+        meta: `${item.caption} · ${item.year}`,
+      })),
+    [curated],
+  );
 
   return (
     <section
@@ -114,8 +100,8 @@ export function VideographySection() {
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2">
-        {curated.map((item) => (
-          <VideoCard key={item.title} item={item} />
+        {curated.map((item, i) => (
+          <VideoCard key={item.title} item={item} onPlay={() => setPlaying(i)} />
         ))}
       </div>
 
@@ -125,6 +111,13 @@ export function VideographySection() {
           <span aria-hidden="true">→</span>
         </Link>
       </div>
+
+      <VideoPlayer
+        items={playerItems}
+        index={playing}
+        onIndex={setPlaying}
+        onClose={() => setPlaying(null)}
+      />
     </section>
   );
 }
