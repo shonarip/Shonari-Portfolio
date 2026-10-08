@@ -7,7 +7,7 @@ const PORTRAIT = "/work/about/shonari-portrait.jpg";
 const PORTRAIT_ALT =
   "Portrait of Shonari Phillips outdoors at dusk, looking at the camera, with short black hair, a light mustache and a white T-shirt, trees and shrubs behind.";
 
-/** The introduction: a washi-paper folder with the portrait stamped by the seal. */
+/** The introduction: a washi-paper folder with the portrait set as a proof, and the seal beside the heading. */
 export function AboutCard() {
   const { hero } = site;
 
@@ -24,7 +24,7 @@ export function AboutCard() {
 
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-14 lg:pr-10">
             <div className="lg:col-span-5">
-              <div className="crop relative mx-auto w-full max-w-[380px] text-onpaper/60 lg:mx-0">
+              <div className="crop relative mx-auto w-full max-w-[380px] text-onpaper lg:mx-0">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={PORTRAIT}
@@ -35,11 +35,11 @@ export function AboutCard() {
                   decoding="async"
                   className="aspect-[828/837] w-full object-cover"
                 />
-                <Seal size={56} className="absolute -bottom-5 -right-4 shadow-[0_6px_18px_rgba(16,19,28,0.25)]" />
               </div>
             </div>
 
             <div className="flex flex-col lg:col-span-7">
+              <Seal size={44} className="mb-6" />
               <h2
                 id="about-card-heading"
                 className="font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.98] tracking-tight"

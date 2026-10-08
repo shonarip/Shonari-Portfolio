@@ -206,10 +206,31 @@ export const site = {
 
   /** /work page header copy (replaces hardcoded intro in work/page.tsx) */
   workIndex: {
-    heading: "All works",
+    heading: "Index",
     intro: "Every piece, grouped by discipline. Open any image to see it full size. The full project stories are on the Portfolio page.",
     backLabel: "Back to Portfolio",
     backHref: "/portfolio",
+  },
+
+  /** The home page contact sheet: twelve proofs, each opening the page it comes from. */
+  contactSheet: {
+    eyebrow: "Contact sheet 01",
+    heading: "Selected proofs",
+    intro: "Twelve pieces from across the work. Each proof opens the project or section it comes from.",
+    proofs: [
+      { title: "Deeply Rooted Billboard Mockup", section: "Physical Production", year: "2024", image: "/work/physical/pro/29-deeply-rooted-billboard-mockup.jpg", href: "/work/physical-production" },
+      { title: "Cyber Ranma", section: "Homage to Nihon", year: "2026", image: "/work/homage/25-cyber-ranma.jpg", href: "/work/homage-to-nihon" },
+      { title: "Safespeare", section: "Photography", year: "2023", image: "/work/photography/09_Safespeare.jpg", href: "/portfolio#photography" },
+      { title: "Red Glove Bride", section: "Prints", year: "2024", image: "/work/prints/carousel/06.jpg", href: "/work/prints" },
+      { title: "Serpent Skull", section: "Motion", year: "2026", image: "/work/videography/posters/serpent-skull.jpg", href: "/portfolio#videography" },
+      { title: "Twenty Two Logo", section: "Physical Production", year: "2024", image: "/work/physical/pro/21-twenty-two-logo.webp", href: "/work/physical-production" },
+      { title: "4 ur Eyez", section: "Homage to Nihon", year: "2026", image: "/work/homage/26-4-ur-eyez.jpg", href: "/work/homage-to-nihon" },
+      { title: "Presidential Touch Limo", section: "Production", year: "2024", image: "/work/physical/pro/02-presidential-touch-limo.jpg", href: "/work?lane=Production" },
+      { title: "Blue Hues", section: "Manga", year: "2024", image: "/work/manga2/Blue_Hues.jpg", href: "/work?lane=Manga" },
+      { title: "Statues", section: "Photography", year: "2023", image: "/work/photography/17_Statues.jpg", href: "/portfolio#photography" },
+      { title: "Cyan Bones", section: "Prints", year: "2024", image: "/work/prints/carousel/01.jpg", href: "/work/prints" },
+      { title: "Schooley's Hots & Brats Logo", section: "Physical Production", year: "2024", image: "/work/physical/pro/22-schooleys-hots-and-brats-logo.png", href: "/work/physical-production" },
+    ],
   },
 
   /** /contact page — contact, about, resume. Never add a phone number. */

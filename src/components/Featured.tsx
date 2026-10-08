@@ -31,7 +31,7 @@ function FeaturedMedia({ item, onOpen }: { item: FeaturedItem; onOpen: () => voi
   const gallery = galleryFor(item);
   const support = gallery.length > 1 ? gallery.slice(1, 3) : [];
   // Crop marks hug each image, so nothing is letterboxed: every preview keeps its own shape.
-  const frame = "crop text-onpaper/70";
+  const frame = "crop text-onpaper";
 
   return (
     <div className="grid gap-3 px-3">
@@ -86,7 +86,7 @@ export function Featured({ headingLevel = "h1" }: { headingLevel?: "h1" | "h2" }
           Featured work
         </Heading>
         <Link href="/work" className="link-quiet">
-          See all works <span aria-hidden="true">→</span>
+          Open the index <span aria-hidden="true">→</span>
         </Link>
       </div>
 

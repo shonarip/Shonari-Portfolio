@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { socialLinks } from "@/content/links";
-import { ColorBar, RegMark, Seal } from "./ProofMarks";
+import { CmykBar, RegMark, Seal } from "./ProofMarks";
 
 const linkClass =
   "inline-flex min-h-11 items-center text-2xs font-medium uppercase tracking-micro text-ink transition-colors hover:text-accent";
@@ -29,10 +29,10 @@ export function Footer({ invite = true }: { invite?: boolean }) {
         </section>
       )}
 
-      <div className="container-page flex items-end gap-4 pb-6">
-        <RegMark className="mb-1 hidden shrink-0 text-ink-muted sm:block" />
-        <ColorBar className="flex-1" />
-        <RegMark className="mb-1 hidden shrink-0 text-ink-muted sm:block" />
+      <div className="container-page flex items-start gap-5 pb-6">
+        <RegMark size={18} className="hidden shrink-0 text-ink-muted sm:block" />
+        <CmykBar className="flex-1 text-ink-muted" />
+        <RegMark size={18} className="hidden shrink-0 text-ink-muted sm:block" />
       </div>
 
       <div className="border-t border-ink/20">

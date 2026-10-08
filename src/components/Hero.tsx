@@ -44,10 +44,7 @@ export function Hero() {
       <div className="container-page flex min-h-[100svh] flex-col pb-8 pt-24 md:pt-28">
         <div className="grid flex-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="order-2 lg:order-1 lg:col-span-7">
-            <p className="t-eyebrow mb-5 flex items-center gap-3">
-              <RegMark size={16} className="text-accent" />
-              {hero.eyebrow}
-            </p>
+            <p className="t-eyebrow mb-5">{hero.eyebrow}</p>
             <h1 id="hero-heading" className="t-display">
               {first}
               <br />
@@ -66,10 +63,19 @@ export function Hero() {
           </div>
 
           <figure className="order-1 lg:order-2 lg:col-span-5">
-            <div className="crop mx-auto w-[min(76vw,46svh,460px)] min-w-[220px] text-ink-muted">
+            {/*
+              The skull is set as a proof: crop marks at the trim corners and a registration
+              target centred in the margin on each side. The marks sit outside the frame; the
+              model itself is unchanged.
+            */}
+            <div className="crop relative mx-auto w-[min(70vw,46svh,460px)] min-w-[200px] text-ink-muted">
               <SkullTurntable />
+              <RegMark size={18} className="absolute -top-[33px] left-1/2 -translate-x-1/2 text-ink-muted" />
+              <RegMark size={18} className="absolute -bottom-[33px] left-1/2 -translate-x-1/2 text-ink-muted" />
+              <RegMark size={18} className="absolute -left-[33px] top-1/2 -translate-y-1/2 text-ink-muted" />
+              <RegMark size={18} className="absolute -right-[33px] top-1/2 -translate-y-1/2 text-ink-muted" />
             </div>
-            <figcaption className="mx-auto mt-5 flex w-[min(76vw,46svh,460px)] min-w-[220px] justify-between gap-4 text-2xs uppercase tracking-micro text-ink-muted">
+            <figcaption className="mx-auto mt-12 flex w-[min(70vw,46svh,460px)] min-w-[200px] justify-between gap-4 text-2xs uppercase tracking-micro text-ink-muted">
               <span>{hero.captionLeft}</span>
               <span className="text-right">{hero.captionRight}</span>
             </figcaption>

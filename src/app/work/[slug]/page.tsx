@@ -62,7 +62,7 @@ export default async function WorkCasePage({ params }: PageProps) {
       <Header />
       <main id="main" className="container-page pb-8 pt-28 md:pt-32">
         <Link href="/work" className="link-quiet">
-          <span aria-hidden="true">←</span> All works
+          <span aria-hidden="true">←</span> Index
         </Link>
 
         <article className="mt-8">

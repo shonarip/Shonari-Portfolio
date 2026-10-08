@@ -167,7 +167,8 @@
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    opacity: 0.22;
+    /* Kept very faint (5%) so thumbnails and dark posters never turn muddy. */
+    opacity: 0.05;
     mix-blend-mode: multiply;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .25  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23p)'/></svg>");
   }
@@ -181,27 +182,38 @@
     border-radius: 10px 10px 0 0;
   }
 
-  /* Printer's crop marks just outside each corner. Their color follows `color`. */
+  /*
+    Printer's crop marks, set like a real press sheet: hairlines on the trim lines, extended
+    into the margin and stopping a clear gap (--gap) short of the corner, so they never touch
+    the art. Their color follows `color`.
+  */
   .crop {
     position: relative;
   }
   .crop::before {
     content: "";
     position: absolute;
-    inset: -14px;
     pointer-events: none;
-    opacity: 0.75;
-    --l: 9px;
-    --o: 14px;
+    --gap: 5px; /* clearance between the art's edge and the mark */
+    --l: 10px; /* mark length */
+    --o: calc(var(--gap) + var(--l)); /* margin the marks occupy */
+    --t: 1px; /* hairline */
+    inset: calc(var(--o) * -1);
     background:
-      linear-gradient(currentColor, currentColor) 0 var(--o) / var(--l) 1px no-repeat,
-      linear-gradient(currentColor, currentColor) var(--o) 0 / 1px var(--l) no-repeat,
-      linear-gradient(currentColor, currentColor) right 0 top var(--o) / var(--l) 1px no-repeat,
-      linear-gradient(currentColor, currentColor) right var(--o) top 0 / 1px var(--l) no-repeat,
-      linear-gradient(currentColor, currentColor) 0 calc(100% - var(--o)) / var(--l) 1px no-repeat,
-      linear-gradient(currentColor, currentColor) var(--o) 100% / 1px var(--l) no-repeat,
-      linear-gradient(currentColor, currentColor) right 0 bottom var(--o) / var(--l) 1px no-repeat,
-      linear-gradient(currentColor, currentColor) right var(--o) bottom 0 / 1px var(--l) no-repeat;
+      linear-gradient(currentColor, currentColor) 0 var(--o) / var(--l) var(--t) no-repeat,
+      linear-gradient(currentColor, currentColor) var(--o) 0 / var(--t) var(--l) no-repeat,
+      linear-gradient(currentColor, currentColor) right 0 top var(--o) / var(--l) var(--t) no-repeat,
+      linear-gradient(currentColor, currentColor) right var(--o) top 0 / var(--t) var(--l) no-repeat,
+      linear-gradient(currentColor, currentColor) 0 calc(100% - var(--o)) / var(--l) var(--t) no-repeat,
+      linear-gradient(currentColor, currentColor) var(--o) 100% / var(--t) var(--l) no-repeat,
+      linear-gradient(currentColor, currentColor) right 0 bottom var(--o) / var(--l) var(--t) no-repeat,
+      linear-gradient(currentColor, currentColor) right var(--o) bottom 0 / var(--t) var(--l) no-repeat;
+  }
+  /* On high-density screens a hairline is one device pixel. */
+  @media (min-resolution: 2dppx) {
+    .crop::before {
+      --t: 0.5px;
+    }
   }
 
   /* The vermilion hanko: a small square seal, stamped slightly off true. */

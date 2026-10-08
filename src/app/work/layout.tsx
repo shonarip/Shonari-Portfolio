@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "All works",
+  title: "Index",
   description:
     "Every piece by Shonari Phillips, grouped by discipline: production, print, manga, photography, and videography.",
 };

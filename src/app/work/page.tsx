@@ -330,9 +330,8 @@ export default function WorkIndexPage() {
         </Link>
 
         <header className="mb-10 mt-8">
-          <h1 className="t-display">
-            Works <span className="text-ink-muted">Archive</span>
-          </h1>
+          <p className="t-eyebrow mb-4">Every proof, by discipline</p>
+          <h1 className="t-display">{site.workIndex.heading}</h1>
           <p className="t-lead mt-6 max-w-2xl">{site.workIndex.intro}</p>
         </header>
 
