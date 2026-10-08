@@ -2,6 +2,8 @@ import { site } from "./site";
 
 /** Alt text for images that are not part of an archive list in site.ts. */
 const EXTRA: Record<string, string> = {
+  "/work/videography/posters/serpent-skull-fire.jpg":
+    "White 3D skull facing forward on dark navy, a black and gold serpent coiled twice around its crown, flames burning in both eye sockets.",
   "/work/physical/tee-02-girls-trips-nobg.png":
     "White T-shirt printed Girls Trip 2022 in blue script above a Virgin Islands eagle crest, with the name Terry below.",
   "/work/physical/tee-01-zoom-nobg.png":

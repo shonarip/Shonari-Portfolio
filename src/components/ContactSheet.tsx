@@ -4,10 +4,10 @@ import { altFor } from "@/content/alt";
 import { imgProps } from "@/content/img";
 import { CmykBar, RegMark } from "./ProofMarks";
 
-const SHEET_SIZES = "(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw";
+const SHEET_SIZES = "(min-width: 640px) 30vw, 45vw";
 
 /**
- * The home page as a contact sheet: a washi press sheet holding twelve proofs.
+ * The home page as a contact sheet: a washi press sheet holding six proofs, three across.
  * Each proof keeps its own shape, with crop marks at its trim corners and a frame number
  * and caption beneath. Registration targets sit centred in the sheet margins, a slug line
  * runs along the top, and a CMYK control strip runs along the foot.
@@ -49,7 +49,7 @@ export function ContactSheet() {
           </span>
         </p>
 
-        <ol className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 sm:gap-x-10 lg:grid-cols-4 lg:gap-x-12">
+        <ol className="grid grid-cols-2 gap-x-8 gap-y-12 sm:grid-cols-3 sm:gap-x-10 lg:gap-x-16 lg:gap-y-16">
           {proofs.map((proof, i) => {
             const n = String(i + 1).padStart(2, "0");
             return (
@@ -60,13 +60,13 @@ export function ContactSheet() {
                   aria-label={`${proof.title}. Opens ${proof.section}.`}
                 >
                   {/* Each proof keeps its own shape; the crop marks hug its trim. */}
-                  <div className="flex h-36 items-end justify-center sm:h-52 lg:h-56">
+                  <div className="flex h-44 items-end justify-center sm:h-60 lg:h-80">
                     <span className="crop inline-block max-h-full max-w-full text-onpaper">
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         {...imgProps(proof.image, SHEET_SIZES)}
                         alt={altFor(proof.image, proof.title)}
-                        className="block h-auto max-h-36 w-auto max-w-full transition-opacity group-hover:opacity-90 sm:max-h-52 lg:max-h-56"
+                        className="block h-auto max-h-44 w-auto max-w-full transition-opacity group-hover:opacity-90 sm:max-h-60 lg:max-h-80"
                       />
                     </span>
                   </div>
