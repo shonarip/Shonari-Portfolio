@@ -359,7 +359,7 @@ export default function WorkIndexPage() {
                 className={[
                   "inline-flex min-h-11 items-center border px-5 text-2xs font-semibold uppercase tracking-micro transition-colors",
                   active
-                    ? "border-paper-pink bg-paper-pink text-onpaper"
+                    ? "border-paper-washi bg-paper-washi text-onpaper"
                     : "border-ink/30 text-ink hover:border-accent hover:text-accent",
                 ].join(" ")}
               >

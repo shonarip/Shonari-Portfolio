@@ -43,7 +43,7 @@ export function CaseFacts({
   return (
     <dl
       className={`grid gap-x-8 gap-y-4 border-y py-5 sm:grid-cols-2 ${
-        paper ? "border-dashed border-onpaper/60" : "border-ink/15"
+        paper ? "border-onpaper/30" : "border-ink/15"
       }`}
     >
       {rows.map((row) => (

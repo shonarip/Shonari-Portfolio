@@ -184,7 +184,7 @@ export const site = {
     secondary: { label: "Get in touch", href: "/contact" },
     captionLeft: "A collection of design work",
     captionRight: "Shonari Phillips 2026",
-    /** Words that cycle after "Shonari Phillips does". */
+    /** Words that cycle after "I design" in the About folder. */
     words: ["prints", "signage", "apparel"],
     coordinates: "26.2129° N, 80.2498° W",
     aboutLines: [

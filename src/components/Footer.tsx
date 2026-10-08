@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { socialLinks } from "@/content/links";
+import { ColorBar, RegMark, Seal } from "./ProofMarks";
 
 const linkClass =
   "inline-flex min-h-11 items-center text-2xs font-medium uppercase tracking-micro text-ink transition-colors hover:text-accent";
@@ -11,6 +12,7 @@ export function Footer({ invite = true }: { invite?: boolean }) {
     <footer className="mt-8 bg-canvas/80">
       {invite && (
         <section aria-labelledby="footer-cta" className="container-page py-16 md:py-28">
+          <Seal size={44} className="mb-8" />
           <h2 id="footer-cta" className="t-h1 max-w-4xl">
             {site.contact.heading}
           </h2>
@@ -26,6 +28,12 @@ export function Footer({ invite = true }: { invite?: boolean }) {
           </div>
         </section>
       )}
+
+      <div className="container-page flex items-end gap-4 pb-6">
+        <RegMark className="mb-1 hidden shrink-0 text-ink-muted sm:block" />
+        <ColorBar className="flex-1" />
+        <RegMark className="mb-1 hidden shrink-0 text-ink-muted sm:block" />
+      </div>
 
       <div className="border-t border-ink/20">
         <nav aria-label="Elsewhere" className="container-page py-6">
@@ -53,7 +61,7 @@ export function Footer({ invite = true }: { invite?: boolean }) {
         </nav>
         <div className="container-page flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 py-6">
           <p className="t-small">
-            © 2026 {site.name} · {site.location}
+            © 2026 {site.name} · {site.location} · Colors sampled from the Homage to Nihon series
           </p>
           <Link href="/portfolio" className="t-small hover:text-accent">
             Back to the work

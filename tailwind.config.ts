@@ -8,36 +8,42 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      // Palette pulled from the Homage to Nihon series: indigo (ai), vermilion (shu),
+      // washi paper, with golden brown (kincha) and celadon (seiji) as small notes.
       colors: {
         canvas: {
-          DEFAULT: "#0a0a0a",
-          soft: "#141414",
-          muted: "#1d1d1d",
+          DEFAULT: "#0c0e14",
+          soft: "#141823",
+          muted: "#1c2130",
         },
-        // Text on the black canvas. All pass AA (4.5:1+).
+        // Washi-toned text on the indigo-black canvas. All pass AA (4.5:1+).
         ink: {
-          DEFAULT: "#f4f0ea",
-          soft: "#d6d1c9",
-          muted: "#cbc6be",
-          faint: "#cbc6be",
+          DEFAULT: "#efe8db",
+          soft: "#d9d2c4",
+          muted: "#c6bfb1",
+          faint: "#c6bfb1",
         },
+        // Vermilion, softened.
         accent: {
-          DEFAULT: "#ff4d86",
-          soft: "#ff7aa5",
+          DEFAULT: "#ec8064",
+          soft: "#f3a088",
         },
+        // Indigo, lifted for use on dark.
         cool: {
-          DEFAULT: "#8b9cff",
-          soft: "#a8b4ff",
+          DEFAULT: "#93a9de",
+          soft: "#b1c1e8",
         },
-        // Solid "paper" colors for cards. Text on them is `onpaper`.
+        kincha: "#d4b46a",
+        seiji: "#8fbfae",
+        // Solid "paper" colors for the folders. Text on them is `onpaper`.
         paper: {
-          pink: "#ff4d86",
-          gray: "#dcdcdc",
-          blue: "#9aa8ff",
+          washi: "#ebe3d3",
+          ai: "#b8c4de",
+          shu: "#e9a991",
         },
         onpaper: {
-          DEFAULT: "#0a0a0a",
-          soft: "#2a1118",
+          DEFAULT: "#10131c",
+          soft: "#2c2a33",
         },
       },
       fontFamily: {

@@ -4,8 +4,9 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Lava-lamp background: soft liquid-metal blobs that rise, merge and split on their own.
- * A small WebGL shader draws seven metaballs with a chrome-style sheen in pink, periwinkle
- * and violet. Output brightness is capped so text on top keeps WCAG AA contrast.
+ * A small WebGL shader draws seven metaballs with a chrome-style sheen in the Homage palette:
+ * indigo, cerulean and deep ai, with one vermilion blob and a warm washi highlight.
+ * Output brightness is capped so text on top keeps WCAG AA contrast.
  *
  * Without WebGL the page keeps the static CSS glow. Reduced-motion visitors get one still frame.
  */
@@ -30,10 +31,11 @@ const int N = 7;
 const float Y_MAX = 0.06;
 
 vec3 tintFor(int i) {
+  if (i == 3) return vec3(1.00, 0.42, 0.28); // shu (vermilion), a single warm blob
   int k = i - (i / 3) * 3;
-  if (k == 0) return vec3(1.00, 0.30, 0.52); // pink
-  if (k == 1) return vec3(0.55, 0.61, 1.00); // periwinkle
-  return vec3(0.62, 0.30, 1.00);             // violet
+  if (k == 0) return vec3(0.22, 0.34, 0.98); // ai (indigo)
+  if (k == 1) return vec3(0.28, 0.62, 0.92); // sora (cerulean)
+  return vec3(0.40, 0.36, 0.90);             // kon (deep blue-violet)
 }
 
 void main() {
@@ -64,7 +66,7 @@ void main() {
   vec3 tint = acc / max(F, 1e-4);
 
   // Outside the blobs: a faint colored haze that thickens near them.
-  vec3 haze = vec3(0.025, 0.025, 0.035) + tint * pow(clamp(F, 0.0, 1.2), 2.0) * 0.30;
+  vec3 haze = vec3(0.025, 0.028, 0.045) + tint * pow(clamp(F, 0.0, 1.2), 2.0) * 0.30;
 
   // Inside: chrome. The field's slope gives each blob a domed, reflective surface.
   vec3 n = normalize(vec3(-G * 0.07, 1.0));
@@ -73,12 +75,12 @@ void main() {
   float b = rd.y * 0.5 + 0.5;
   float band1 = smoothstep(0.55, 0.95, sin(b * 7.0 + a * 2.0 + t * 0.15) * 0.5 + 0.5);
   float band2 = smoothstep(0.72, 1.00, sin(a * 5.0 - b * 3.0 + 1.7) * 0.5 + 0.5);
-  vec3 chrome = vec3(0.025, 0.025, 0.04)
+  vec3 chrome = vec3(0.025, 0.028, 0.05)
     + tint * (0.50 * band1)
-    + mix(vec3(0.75, 0.80, 1.00), tint, 0.4) * (0.55 * band2);
+    + mix(vec3(0.86, 0.88, 0.94), tint, 0.4) * (0.55 * band2);
   float spec = pow(max(dot(n, normalize(vec3(-0.4, 0.6, 0.7))), 0.0), 36.0);
   float rim = pow(1.0 - n.z, 1.5);
-  chrome += vec3(1.0, 0.92, 0.96) * spec * 0.8 + tint * rim * 0.35;
+  chrome += vec3(1.0, 0.94, 0.86) * spec * 0.8 + tint * rim * 0.35;
 
   float m = smoothstep(0.95, 1.25, F);
   vec3 col = mix(haze, chrome, m);
@@ -194,9 +196,9 @@ export function Backdrop() {
       className={`backdrop pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-canvas ${ready ? "backdrop-ready" : ""}`}
     >
       {/* Static fallback, hidden once the shader is running. */}
-      <div className="backdrop-orb backdrop-orb-pink" />
-      <div className="backdrop-orb backdrop-orb-blue" />
-      <div className="backdrop-orb backdrop-orb-violet" />
+      <div className="backdrop-orb backdrop-orb-ai" />
+      <div className="backdrop-orb backdrop-orb-sora" />
+      <div className="backdrop-orb backdrop-orb-shu" />
       <canvas ref={canvasRef} className="backdrop-canvas" />
       <div className="backdrop-grain" />
       <div className="backdrop-vignette" />

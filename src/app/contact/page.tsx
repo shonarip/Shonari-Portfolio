@@ -56,7 +56,11 @@ export default function ContactPage() {
           aria-labelledby="about-heading"
           className="mt-20 scroll-mt-16 md:mt-28"
         >
-          <div className="paper-pink blueprint px-7 py-12 sm:px-12 md:px-16 md:py-16">
+          <p className="folder-tab paper-washi ml-6 sm:ml-10">
+            <span className="text-onpaper-soft">00</span> Profile
+          </p>
+          <div className="crop text-ink-muted">
+          <div className="paper-washi paper-grain px-7 py-12 sm:px-12 md:px-16 md:py-16">
             <div className="grid gap-10 lg:grid-cols-12">
               <div className="lg:col-span-4">
                 <h2 id="about-heading" className="t-h1 !text-onpaper">
@@ -69,6 +73,7 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
+          </div>
           </div>
         </section>
 

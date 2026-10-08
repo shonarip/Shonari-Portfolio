@@ -10,8 +10,11 @@ import { ProjectGallery } from "./ProjectGallery";
 
 type FeaturedItem = (typeof site.featured)[number];
 
-/** Card colors, cycled in order. */
-const PAPER = ["paper-gray", "paper-blue", "paper-pink"] as const;
+/** Folder colors, cycled in order. */
+const PAPER = ["paper-ai", "paper-shu", "paper-washi"] as const;
+
+/** Where each folder's tab sits along the top edge, so the stack reads as a file drawer. */
+const TAB_X = ["md:ml-0", "md:ml-[33%]", "md:ml-[66%]"] as const;
 
 function galleryFor(item: FeaturedItem): string[] {
   if ("images" in item && Array.isArray(item.images) && item.images.length > 0) {
@@ -27,11 +30,11 @@ function pad(n: number) {
 function FeaturedMedia({ item, onOpen }: { item: FeaturedItem; onOpen: () => void }) {
   const gallery = galleryFor(item);
   const support = gallery.length > 1 ? gallery.slice(1, 3) : [];
-  // The frame hugs each image, so nothing is letterboxed: every preview keeps its own shape.
-  const frame = "border border-dashed border-onpaper/60 p-1.5";
+  // Crop marks hug each image, so nothing is letterboxed: every preview keeps its own shape.
+  const frame = "crop text-onpaper/70";
 
   return (
-    <div className="grid gap-3">
+    <div className="grid gap-3 px-3">
       <button
         type="button"
         onClick={onOpen}
@@ -46,7 +49,7 @@ function FeaturedMedia({ item, onOpen }: { item: FeaturedItem; onOpen: () => voi
         />
       </button>
       {support.length > 0 && (
-        <ul className="grid grid-cols-2 items-start gap-3">
+        <ul className="mt-6 grid grid-cols-2 items-start gap-8">
           {support.map((src) => (
             <li key={src} className="flex justify-center">
               <button
@@ -70,7 +73,7 @@ function FeaturedMedia({ item, onOpen }: { item: FeaturedItem; onOpen: () => voi
   );
 }
 
-/** Featured projects, each a stacked color folder written up as a short case study. */
+/** Featured projects: a drawer of paper folders, each written up as a short case study. */
 export function Featured({ headingLevel = "h1" }: { headingLevel?: "h1" | "h2" }) {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
   const openItem = site.featured.find((f) => f.slug === openSlug) ?? null;
@@ -98,11 +101,17 @@ export function Featured({ headingLevel = "h1" }: { headingLevel?: "h1" | "h2" }
               className={i === 0 ? "" : "-mt-px"}
             >
               <div className="container-page">
-                <p className={`folder-tab ${paper}`}>Featured work {pad(i + 1)}</p>
+                <p className={`folder-tab ${paper} ${TAB_X[i % TAB_X.length]}`}>
+                  <span className="text-onpaper-soft">File {pad(i + 1)}</span>
+                  {item.caption}
+                </p>
               </div>
-              <div className={`${paper} py-12 md:py-20`}>
+              <div className={`${paper} paper-grain py-12 md:py-20`}>
                 <div className="container-page grid gap-10 lg:grid-cols-12 lg:gap-14">
                   <div className="lg:col-span-5">
+                    <p aria-hidden="true" className="mb-4 font-display text-[clamp(4rem,9vw,7.5rem)] italic leading-none text-onpaper/20">
+                      {pad(i + 1)}
+                    </p>
                     <h2 id={`case-${item.slug}`} className="t-h1 !text-onpaper">
                       {item.title}
                     </h2>

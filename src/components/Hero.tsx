@@ -4,8 +4,12 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { site } from "@/content/site";
 import { SkullTurntable } from "./SkullTurntable";
+import { RegMark } from "./ProofMarks";
 
-/** First screen: the skull as the hero object, the name, and a path into the work. */
+/**
+ * First screen, set like a proof sheet: the name and a path into the work on the left,
+ * the skull framed in crop marks on the right, and a slug line of facts along the bottom.
+ */
 export function Hero() {
   // Old in-page links (/#work, /#featured, …) now live on /portfolio.
   useEffect(() => {
@@ -16,53 +20,71 @@ export function Hero() {
   }, []);
 
   const { hero } = site;
+  const [first, ...rest] = hero.headline.split(" ");
+
+  const slug = [
+    { label: "Based in", value: site.location },
+    { label: "Coordinates", value: hero.coordinates },
+    { label: "Practice", value: "Print · Signage · Apparel · Motion" },
+    {
+      label: "Now",
+      value: hero.context
+        .replace(/^Currently an? /, "")
+        .replace(/\.$/, "")
+        .replace(/^./, (c) => c.toUpperCase()),
+    },
+  ];
 
   return (
-    <section
-      id="top"
-      aria-labelledby="hero-heading"
-      className="container-page flex min-h-[100svh] flex-col justify-between pb-8 pt-20"
-    >
-      <div className="relative flex flex-1 items-center justify-center py-4">
-        <p className="t-eyebrow absolute left-0 top-1/2 hidden max-w-[10rem] -translate-y-1/2 md:block">
-          {hero.captionLeft}
-        </p>
-        <p className="t-eyebrow absolute right-0 top-1/2 hidden max-w-[10rem] -translate-y-1/2 text-right md:block">
-          {hero.captionRight}
-        </p>
-        <div className="w-[min(70vw,56svh,540px)] min-w-[220px]">
-          <SkullTurntable />
-        </div>
-      </div>
+    <section id="top" aria-labelledby="hero-heading" className="relative">
+      <p className="rail absolute left-4 top-1/2 hidden -translate-y-1/2 xl:block" aria-hidden="true">
+        Portfolio · {site.name} · 2026
+      </p>
 
-      <div className="grid items-end gap-8 md:grid-cols-12">
-        <div className="md:col-span-8">
-          <p className="t-eyebrow mb-4">{hero.eyebrow}</p>
-          <h1 id="hero-heading" className="t-display">
-            {hero.headline}
-          </h1>
-        </div>
-        <div className="md:col-span-4">
-          <p className="t-lead">{hero.summary}</p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Link href={hero.primary.href} className="btn-primary">
-              {hero.primary.label}
-              <span aria-hidden="true">→</span>
-            </Link>
-            <Link href={hero.secondary.href} className="btn-secondary">
-              {hero.secondary.label}
-            </Link>
+      <div className="container-page flex min-h-[100svh] flex-col pb-8 pt-24 md:pt-28">
+        <div className="grid flex-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
+          <div className="order-2 lg:order-1 lg:col-span-7">
+            <p className="t-eyebrow mb-5 flex items-center gap-3">
+              <RegMark size={16} className="text-accent" />
+              {hero.eyebrow}
+            </p>
+            <h1 id="hero-heading" className="t-display">
+              {first}
+              <br />
+              <em className="text-ink-soft">{rest.join(" ")}</em>
+            </h1>
+            <p className="t-lead mt-8 max-w-xl">{hero.summary}</p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href={hero.primary.href} className="btn-primary">
+                {hero.primary.label}
+                <span aria-hidden="true">→</span>
+              </Link>
+              <Link href={hero.secondary.href} className="btn-secondary">
+                {hero.secondary.label}
+              </Link>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <a
-        href="#about"
-        className="t-eyebrow mx-auto mt-8 inline-flex min-h-11 flex-col items-center gap-1 hover:text-accent"
-      >
-        Scroll down
-        <span aria-hidden="true">↓</span>
-      </a>
+          <figure className="order-1 lg:order-2 lg:col-span-5">
+            <div className="crop mx-auto w-[min(76vw,46svh,460px)] min-w-[220px] text-ink-muted">
+              <SkullTurntable />
+            </div>
+            <figcaption className="mx-auto mt-5 flex w-[min(76vw,46svh,460px)] min-w-[220px] justify-between gap-4 text-2xs uppercase tracking-micro text-ink-muted">
+              <span>{hero.captionLeft}</span>
+              <span className="text-right">{hero.captionRight}</span>
+            </figcaption>
+          </figure>
+        </div>
+
+        <dl className="mt-12 grid grid-cols-2 gap-x-6 gap-y-5 border-t border-ink/20 pt-5 md:grid-cols-4">
+          {slug.map((item) => (
+            <div key={item.label}>
+              <dt className="text-2xs uppercase tracking-micro text-ink-muted">{item.label}</dt>
+              <dd className="mt-1 text-[15px] text-ink">{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
     </section>
   );
 }
