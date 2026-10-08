@@ -157,6 +157,9 @@ const printGroups = [
 ] as const;
 const printImages: string[] = printGroups.flatMap((g) => [...g.images]);
 
+/** The resume PDF. The query string busts caches when the file is replaced. */
+const RESUME = "/resume.pdf?v=resume-nariportfolio";
+
 export const site = {
   name: "Shonari Phillips",
   title: "Graphic Designer",
@@ -172,7 +175,7 @@ export const site = {
   /** All Works tabs only — Design lane projects under All, not a separate tab (Chief 2026-09-18) */
   workFilters: ["Production", "Manga", "Print", "Photography", "Videography"] as const,
 
-  resume: "/resume.pdf?v=resume-nariportfolio",
+  resume: RESUME,
 
   /** First screen: name, what I do, and a clear path to the work. */
   hero: {
@@ -222,6 +225,7 @@ export const site = {
     { label: "Works", href: "/portfolio" },
     { label: "About", href: "/contact#about" },
     { label: "Contact", href: "/contact" },
+    { label: "Resume", href: RESUME, external: true },
   ],
 
   about: {
@@ -229,7 +233,7 @@ export const site = {
     paragraphs: [
       "I'm Shonari Phillips, a graphic designer in Tamarac, FL. I design print, signage, and apparel and take it through production. I'm currently at Biz Printing USA. Before that I was the sole designer at FASTSIGNS Indianapolis, turning out 35–50 designs a week for clients including Century 21 and Live Nation, and I started at Kingdom Workshop in Fort Lauderdale, designing and producing apparel, signs, and vehicle wraps in-house.",
       "Through creating, I give purpose to things that might seem purposeless. Graphic design is not only imagery — it is a way to let a viewer grasp a psyche. My love for Japanese visual culture spans years; Homage to Nihon is where I extract the essence of panels and characters and refuse to make the same design twice.",
-      "Die with Memories, Not Dreams. Cool mask over soft heartbreak. Night-sky stages for work that wants to glow.",
+      "Outside client work I make original prints, photography, and 3D animation, all collected here. My motto: die with memories, not dreams.",
     ],
   },
 
@@ -249,7 +253,7 @@ export const site = {
         "Signage, vehicle graphics, banners, business cards, and apparel, designed and taken through production for paying clients.",
       caseStudy: {
         client: "Businesses across the Indianapolis and Fort Lauderdale metro areas",
-        role: "Lead Graphic Designer",
+        role: "Sole Designer (FASTSIGNS) · Graphic Designer (Biz Printing USA)",
         tools: "Adobe Creative Suite, Photoshop, Illustrator",
         deliveredFor: ["Indianapolis Museum of Art", "Century 21", "Carpenter Insurance", "Car dealerships", "Home retail brands"],
         summary: "I'm a graphic designer at Biz Printing USA in Tamarac, designing banners, business cards, flyers, yard signs, and print-and-mail pieces through to press. At FASTSIGNS Indianapolis I was the sole designer, turning out 35–50 designs a week, with production-ready vinyl and graphics for vehicles, substrates, and buildings. At Kingdom Workshop in Fort Lauderdale I designed apparel, signs, and vehicle wraps and produced them in-house.",
@@ -354,7 +358,7 @@ export const site = {
         "Signage, vehicle graphics, banners, business cards, and apparel, designed and taken through production for paying clients.",
       caseStudy: {
         client: "Businesses across the Indianapolis and Fort Lauderdale metro areas",
-        role: "Lead Graphic Designer",
+        role: "Sole Designer (FASTSIGNS) · Graphic Designer (Biz Printing USA)",
         tools: "Adobe Creative Suite, Photoshop, Illustrator",
         deliveredFor: ["Indianapolis Museum of Art", "Century 21", "Carpenter Insurance", "Car dealerships", "Home retail brands"],
         summary: "I'm a graphic designer at Biz Printing USA in Tamarac, designing banners, business cards, flyers, yard signs, and print-and-mail pieces through to press. At FASTSIGNS Indianapolis I was the sole designer, turning out 35–50 designs a week, with production-ready vinyl and graphics for vehicles, substrates, and buildings. At Kingdom Workshop in Fort Lauderdale I designed apparel, signs, and vehicle wraps and produced them in-house.",
