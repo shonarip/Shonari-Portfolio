@@ -14,7 +14,7 @@ export function Hero() {
   // Old in-page links (/#work, /#featured, …) now live on /portfolio.
   useEffect(() => {
     const h = window.location.hash;
-    if (h && h !== "#top" && h !== "#main" && h !== "#about" && h !== "#featured") {
+    if (h && !["#top", "#main", "#about", "#featured", "#proofs"].includes(h)) {
       window.location.replace(`/portfolio${h}`);
     }
   }, []);
