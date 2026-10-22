@@ -76,7 +76,7 @@ export default async function WorkCasePage({ params }: PageProps) {
           {"caseStudy" in project && project.caseStudy ? (
             <div className="mt-10 max-w-3xl">
               <CaseFacts caseStudy={project.caseStudy} year={project.year} />
-              <p className="mt-6 text-lg leading-relaxed text-ink-soft">{project.caseStudy.summary}</p>
+              <p className="mt-6 max-w-[65ch] text-lg leading-relaxed text-ink-soft">{project.caseStudy.summary}</p>
             </div>
           ) : (
             <p className="t-small mt-6">

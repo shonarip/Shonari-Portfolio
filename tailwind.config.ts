@@ -49,6 +49,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-sans)", "ui-monospace", "monospace"],
         mono: ["var(--font-sans)", "ui-monospace", "monospace"],
+        text: ["var(--font-text)", "system-ui", "-apple-system", "Segoe UI", "sans-serif"],
         serif: ["var(--font-display)", "Georgia", "serif"],
         display: ["var(--font-display)", "Georgia", "serif"],
       },

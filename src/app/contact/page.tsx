@@ -67,7 +67,7 @@ export default function ContactPage() {
                   {site.about.heading}
                 </h2>
               </div>
-              <div className="space-y-5 text-[17px] leading-[1.75] lg:col-span-8">
+              <div className="max-w-[65ch] space-y-5 text-[17px] leading-[1.75] lg:col-span-8">
                 {site.about.paragraphs.map((p, i) => (
                   <p key={i}>{p}</p>
                 ))}

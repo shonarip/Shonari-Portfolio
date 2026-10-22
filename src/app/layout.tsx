@@ -1,14 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Instrument_Serif } from "next/font/google";
+import { IBM_Plex_Mono, IBM_Plex_Sans, Instrument_Serif } from "next/font/google";
 import { site } from "@/content/site";
 import { AmbientAudio } from "@/components/AmbientAudio";
 import "./globals.css";
 
-/** UI, labels and body copy. */
+/** Labels, captions, nav, buttons and proof marks. */
 const mono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-sans",
+  display: "swap",
+});
+
+/** Paragraphs and other running text: easier to read at length than mono. */
+const text = IBM_Plex_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-text",
   display: "swap",
 });
 
@@ -45,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${mono.variable} ${serif.variable}`}>
+    <html lang="en" className={`${mono.variable} ${text.variable} ${serif.variable}`}>
       <body className="min-h-screen font-sans">
         <a
           href="#main"

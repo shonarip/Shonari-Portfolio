@@ -4,7 +4,8 @@
 
 /*
   Design system: "the proof sheet"
-  - Indigo-black canvas, IBM Plex Mono for UI and body, Instrument Serif for display type.
+  - Indigo-black canvas. Instrument Serif for display type, IBM Plex Sans for running text,
+    IBM Plex Mono for labels, captions, nav, buttons and proof marks.
   - Colors come from the Homage to Nihon series: ai (indigo), shu (vermilion), washi (paper),
     with kincha (golden brown) and seiji (celadon) as small notes.
   - Print-shop details carry the identity: crop marks, registration marks, a color bar,
@@ -21,7 +22,35 @@
   }
 
   body {
-    @apply bg-transparent text-[15px] leading-relaxed text-ink antialiased;
+    @apply bg-transparent text-base leading-relaxed text-ink antialiased;
+  }
+
+  /* Running text reads in Plex Sans at 16-17px. */
+  p,
+  dd,
+  li {
+    @apply font-text;
+  }
+
+  /*
+    Mono stays on everything that works as a label: small or uppercase text, nav, buttons,
+    term labels and dates. These rules come after the one above, so a label inside a <p> or <li> stays mono.
+  */
+  nav,
+  nav *,
+  dt,
+  time,
+  button,
+  .uppercase,
+  .text-2xs,
+  .text-xs,
+  .t-small,
+  .t-eyebrow,
+  .btn,
+  .link-quiet,
+  .folder-tab,
+  .rail {
+    @apply font-sans;
   }
 
   ::selection {
