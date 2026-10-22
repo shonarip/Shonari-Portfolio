@@ -22,17 +22,12 @@ export function Hero() {
   const { hero } = site;
   const [first, ...rest] = hero.headline.split(" ");
 
+  // Slug line, set like the job info printed in a press sheet's margin.
   const slug = [
     { label: "Based in", value: site.location },
-    { label: "Coordinates", value: hero.coordinates },
+    { label: "Press", value: hero.press },
     { label: "Practice", value: "Print · Signage · Apparel · Motion" },
-    {
-      label: "Now",
-      value: hero.context
-        .replace(/^Currently an? /, "")
-        .replace(/\.$/, "")
-        .replace(/^./, (c) => c.toUpperCase()),
-    },
+    { label: "Previously", value: hero.previously },
   ];
 
   return (

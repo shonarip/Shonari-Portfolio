@@ -240,11 +240,13 @@ export const site = {
     context: "Currently a graphic designer at Biz Printing USA.",
     primary: { label: "View my work", href: "/portfolio" },
     secondary: { label: "Get in touch", href: "/contact" },
-    captionLeft: "A collection of design work",
-    captionRight: "Shonari Phillips 2026",
+    captionLeft: "Proof 00 · 3D skull",
+    captionRight: "Shonari Phillips · 2026",
     /** Words that cycle after "I design" in the About folder. */
     words: ["prints", "signage", "apparel"],
-    coordinates: "26.2129° N, 80.2498° W",
+    /** Where I work now, and where I worked before, for the slug line under the hero. */
+    press: "Graphic designer, Biz Printing USA",
+    previously: "FASTSIGNS Indianapolis",
     aboutLines: [
       "I'm a graphic designer from Tamarac, FL, working across print, signage, apparel, and manga-inspired art.",
       "I take each piece from first concept through production, designing for the sign, shirt, banner, or print it will become.",

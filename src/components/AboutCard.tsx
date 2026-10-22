@@ -61,8 +61,8 @@ export function AboutCard() {
                   <dd className="mt-1 text-onpaper-soft">{site.location}</dd>
                 </div>
                 <div>
-                  <dt className="font-medium">Coordinates</dt>
-                  <dd className="mt-1 text-onpaper-soft">{hero.coordinates}</dd>
+                  <dt className="font-medium">Press</dt>
+                  <dd className="mt-1 text-onpaper-soft">Biz Printing USA</dd>
                 </div>
               </dl>
 
