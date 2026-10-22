@@ -36,6 +36,9 @@ export function Hero() {
         Portfolio · {site.name} · 2026
       </p>
 
+      {/* A soft dark pool behind the name and intro, so the moving background sits back there. */}
+      <div aria-hidden="true" className="hero-scrim pointer-events-none absolute inset-0 -z-[1]" />
+
       <div className="container-page flex min-h-[100svh] flex-col pb-8 pt-24 md:pt-28">
         <div className="grid flex-1 items-center gap-10 lg:grid-cols-12 lg:gap-8">
           <div className="order-2 lg:order-1 lg:col-span-7">
@@ -70,9 +73,9 @@ export function Hero() {
               <RegMark size={18} className="absolute -left-[33px] top-1/2 -translate-y-1/2 text-ink-muted" />
               <RegMark size={18} className="absolute -right-[33px] top-1/2 -translate-y-1/2 text-ink-muted" />
             </div>
-            <figcaption className="mx-auto mt-12 flex w-[min(70vw,46svh,460px)] min-w-[200px] justify-between gap-4 text-2xs uppercase tracking-micro text-ink-muted">
-              <span>{hero.captionLeft}</span>
-              <span className="text-right">{hero.captionRight}</span>
+            <figcaption className="mx-auto mt-12 flex w-[min(70vw,46svh,460px)] min-w-[200px] flex-wrap justify-between gap-x-4 gap-y-1 text-2xs uppercase tracking-micro text-ink-muted">
+              <span className="whitespace-nowrap">{hero.captionLeft}</span>
+              <span className="whitespace-nowrap text-right">{hero.captionRight}</span>
             </figcaption>
           </figure>
         </div>

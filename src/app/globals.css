@@ -255,6 +255,16 @@
     transform: rotate(-4deg);
   }
 
+  /* Dims the moving background behind the hero name and intro. Phones stack the name lower. */
+  .hero-scrim {
+    background: radial-gradient(ellipse 95% 42% at 35% 74%, rgba(12, 14, 20, 0.72) 0%, rgba(12, 14, 20, 0.45) 45%, rgba(12, 14, 20, 0) 78%);
+  }
+  @media (min-width: 1024px) {
+    .hero-scrim {
+      background: radial-gradient(ellipse 70% 60% at 22% 48%, rgba(12, 14, 20, 0.72) 0%, rgba(12, 14, 20, 0.45) 45%, rgba(12, 14, 20, 0) 75%);
+    }
+  }
+
   /* Vertical side label, read top to bottom. */
   .rail {
     writing-mode: vertical-rl;

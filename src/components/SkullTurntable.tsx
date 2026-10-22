@@ -30,7 +30,7 @@ export function SkullTurntable() {
     let renderer: import("three").WebGLRenderer | null = null;
     let removeResize: (() => void) | null = null;
 
-    (async () => {
+    const load = async () => {
       const THREE = await import("three");
       const { GLTFLoader } = await import("three/examples/jsm/loaders/GLTFLoader.js");
       const { DRACOLoader } = await import("three/examples/jsm/loaders/DRACOLoader.js");
@@ -145,12 +145,49 @@ export function SkullTurntable() {
       };
       window.addEventListener("resize", onResize);
       removeResize = () => window.removeEventListener("resize", onResize);
-    })().catch(() => {
-      /* load failure — leave empty mount */
-    });
+    };
+    const run = () => {
+      load().catch(() => {
+        /* load failure: the poster stays */
+      });
+    };
+
+    /*
+      Phones keep the still poster at first and fetch the 3D model (about 2 MB with three.js and
+      its decoder) only after the first tap or scroll, or 5 seconds after the page has loaded.
+      Data Saver keeps the poster only. Desktops load it straight away.
+    */
+    const phone = window.matchMedia("(max-width: 767px), (pointer: coarse)").matches;
+    const saveData = Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+    let cancelDeferred: (() => void) | null = null;
+    if (!phone) {
+      run();
+    } else if (!saveData) {
+      let started = false;
+      let timer = 0;
+      const events = ["pointerdown", "touchstart", "scroll", "keydown"] as const;
+      const go = () => {
+        if (started) return;
+        started = true;
+        cancelDeferred?.();
+        run();
+      };
+      const arm = () => {
+        timer = window.setTimeout(go, 5000);
+      };
+      events.forEach((e) => window.addEventListener(e, go, { passive: true, once: true }));
+      if (document.readyState === "complete") arm();
+      else window.addEventListener("load", arm, { once: true });
+      cancelDeferred = () => {
+        window.clearTimeout(timer);
+        window.removeEventListener("load", arm);
+        events.forEach((e) => window.removeEventListener(e, go));
+      };
+    }
 
     return () => {
       disposed = true;
+      cancelDeferred?.();
       cancelAnimationFrame(raf);
       removeResize?.();
       if (renderer) {
