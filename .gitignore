@@ -9,9 +9,11 @@
 !/public/videos/posters/**
 !/public/videos/.gitkeep
 
-# large videography binaries (keep posters if added)
+# large videography binaries: videos live in the R2 bucket; poster images are tracked
 /public/work/videography/*
 !/public/work/videography/.gitkeep
+!/public/work/videography/posters/
+!/public/work/videography/posters/**
 /public/videos/*
 !/public/videos/posters/
 !/public/videos/posters/**
