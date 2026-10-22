@@ -13,7 +13,7 @@ export function Footer({ invite = true }: { invite?: boolean }) {
       {invite && (
         <section aria-labelledby="footer-cta" className="container-page py-16 md:py-28">
           <Seal size={44} className="mb-8" />
-          <h2 id="footer-cta" className="t-h1 max-w-4xl">
+          <h2 id="footer-cta" className="t-h1 max-w-4xl [text-wrap:balance]">
             {site.contact.heading}
           </h2>
           <p className="t-lead mt-6 max-w-xl">{site.contact.body}</p>
@@ -21,6 +21,10 @@ export function Footer({ invite = true }: { invite?: boolean }) {
             <a href={`mailto:${site.email}`} className="btn-primary">
               {site.contact.cta}
               <span aria-hidden="true">→</span>
+            </a>
+            <a href={site.resume} target="_blank" rel="noopener noreferrer" className="btn-secondary">
+              {site.contact.resumeCta}
+              <span className="sr-only"> (PDF, opens in a new tab)</span>
             </a>
             <a href={`mailto:${site.email}`} className="link-quiet normal-case tracking-normal">
               {site.email}

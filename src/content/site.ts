@@ -2487,9 +2487,10 @@ export const site = {
   },
 
   contact: {
-    heading: "Have a project in mind?",
-    body: "Print, signage, apparel, brand, or a personal piece. Tell me what you're building and I'll get back to you.",
+    heading: "Hiring, or have a print job?",
+    body: "Whether you're filling a design role or need print, signage, apparel or a brand made, email me and I'll get back to you.",
     cta: "Email me",
+    resumeCta: "Download resume",
   },
 
   /**
