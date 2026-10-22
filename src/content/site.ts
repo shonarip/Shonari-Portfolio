@@ -346,13 +346,13 @@ export const site = {
       role: "Art Direction × Manga Edits",
       lane: "Manga",
       description:
-        "Creative takes on favorite manga panels and anime characters — extracting what the image represents, never repeating a design. Emotion through the motionless.",
+        "An ongoing series where I rework manga panels and anime characters into new compositions: marble, ink, glitch and color. Each edit starts from one image and asks what it stands for.",
       caseStudy: {
         client: "Personal series",
         role: "Art direction and manga edits",
         tools: "Adobe Creative Suite, Photoshop, Illustrator",
         deliveredFor: [],
-        summary: "Homage to Nihon is an ongoing series of edits of manga panels and anime characters. Each piece pulls out what the original image stands for, and no design is repeated.",
+        summary: "The series runs in five sets: samurai and swordsmen, faces and expressions, marble and ink, characters and portraits, and the latest edits. No design repeats. The aim is emotion through the motionless.",
       },
       tags: ["Manga", "Edit", "Japan"],
       href: "/work/homage-to-nihon",
@@ -374,13 +374,13 @@ export const site = {
       lane: "Manga",
       featured: true,
       description:
-        "Creative takes on favorite manga panels and anime characters — extracting essence, never the same design twice.",
+        "An ongoing series where I rework manga panels and anime characters into new compositions: marble, ink, glitch and color. Each edit starts from one image and asks what it stands for.",
       caseStudy: {
         client: "Personal series",
         role: "Art direction and manga edits",
         tools: "Adobe Creative Suite, Photoshop, Illustrator",
         deliveredFor: [],
-        summary: "Homage to Nihon is an ongoing series of edits of manga panels and anime characters. Each piece pulls out what the original image stands for, and no design is repeated.",
+        summary: "The series runs in five sets: samurai and swordsmen, faces and expressions, marble and ink, characters and portraits, and the latest edits. No design repeats. The aim is emotion through the motionless.",
       },
       tags: ["Manga", "Edit", "Japan"],
       href: "/work/homage-to-nihon",
@@ -468,7 +468,7 @@ export const site = {
       lane: "Print",
       featured: false,
       description:
-        "Original pieces collected over time, all available as prints.",
+        "Seventeen original pieces in four themes: skulls and skeletons, cities and landscapes, figures and portraits, and surreal glitch work. All are available as prints.",
       tags: ["Print", "Archive"],
       href: "/work/prints",
       adobe: "https://shonarip.myportfolio.com/solo-work",
