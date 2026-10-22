@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { site } from "@/content/site";
+import { captionLine } from "@/content/caption";
 import variants from "@/content/img-variants.json";
 import { VideoPlayer, type VideoPlayerItem } from "./VideoPlayer";
 
@@ -80,7 +81,7 @@ export function VideographySection() {
         poster: posterSrc(item.poster),
         title: item.title,
         alt: item.alt,
-        meta: `${item.caption} · ${item.year}`,
+        meta: captionLine("Motion", item.year, item.caption),
       })),
     [curated],
   );

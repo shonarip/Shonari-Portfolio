@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { site } from "@/content/site";
+import { captionLine } from "@/content/caption";
 import { altFor } from "@/content/alt";
 import { imgProps, SIZES } from "@/content/img";
 import { CaseFacts } from "./CaseFacts";
@@ -143,7 +144,11 @@ export function Featured({
                     <p className="mt-6 text-[17px] leading-[1.7]">{item.description}</p>
 
                     <p className="mt-6 text-2xs font-semibold uppercase tracking-micro">
-                      {item.year} · {item.caption}
+                      {captionLine(
+                        "group" in item && item.group === "client" ? "Client work" : item.caseStudy.client,
+                        item.year,
+                        item.caption,
+                      )}
                     </p>
 
                     <div className="mt-6">

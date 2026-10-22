@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { captionLine } from "@/content/caption";
 import { site } from "@/content/site";
 import { altFor } from "@/content/alt";
 import { imgProps } from "@/content/img";
@@ -77,7 +78,7 @@ export function ContactSheet() {
                         {proof.title}
                       </span>
                       <span className="mt-0.5 block text-2xs uppercase tracking-micro text-onpaper-soft">
-                        {proof.section} · {proof.year}
+                        {captionLine(proof.source, proof.year, proof.medium)}
                       </span>
                     </span>
                   </p>

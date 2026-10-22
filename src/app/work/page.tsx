@@ -10,6 +10,7 @@ import { VideoPlayer, type VideoPlayerItem } from "@/components/VideoPlayer";
 import { altFor } from "@/content/alt";
 import { mediaUrl } from "@/content/media";
 import { site } from "@/content/site";
+import { captionLine } from "@/content/caption";
 import { thumbProps } from "@/content/img";
 
 const FILTERS = ["All", ...site.workFilters] as const;
@@ -180,7 +181,7 @@ export default function WorkIndexPage() {
     poster: item.poster,
     title: item.title,
     alt: item.alt,
-    meta: `${item.caption} · ${item.year}`,
+    meta: captionLine("Motion", item.year, item.caption),
   }));
 
   useEffect(() => {
