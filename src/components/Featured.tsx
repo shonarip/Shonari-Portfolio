@@ -73,32 +73,57 @@ function FeaturedMedia({ item, onOpen }: { item: FeaturedItem; onOpen: () => voi
   );
 }
 
-/** Featured projects: a drawer of paper folders, each written up as a short case study. */
-export function Featured({ headingLevel = "h1" }: { headingLevel?: "h1" | "h2" }) {
+type Group = "client" | "personal";
+
+/**
+ * Featured projects: a drawer of paper folders, each written up as a short case study.
+ * `group` limits the drawer to client or personal files; `startAt` keeps File numbers running across drawers.
+ */
+export function Featured({
+  group,
+  id = "work",
+  heading = "Featured work",
+  intro,
+  startAt = 0,
+}: {
+  group?: Group;
+  id?: string;
+  /** `null` drops the drawer's own heading (the folder title already names it). */
+  heading?: string | null;
+  intro?: string;
+  startAt?: number;
+}) {
   const [openSlug, setOpenSlug] = useState<string | null>(null);
-  const openItem = site.featured.find((f) => f.slug === openSlug) ?? null;
-  const Heading = headingLevel;
+  const items = site.featured.filter((f) => !group || ("group" in f && f.group === group));
+  const openItem = items.find((f) => f.slug === openSlug) ?? null;
 
   return (
-    <section id="work" aria-labelledby="featured-heading" className="scroll-mt-16">
-      <div className="container-page flex flex-wrap items-end justify-between gap-4 pb-8 pt-6 md:pb-12">
-        <Heading id="featured-heading" className="t-h1">
-          Featured work
-        </Heading>
-        <Link href="/work" className="link-quiet">
-          Open the index <span aria-hidden="true">→</span>
-        </Link>
-      </div>
+    <section
+      id={id}
+      aria-labelledby={heading ? `${id}-heading` : `case-${items[0]?.slug}`}
+      className="scroll-mt-16"
+    >
+      {heading ? (
+        <div className="container-page pb-8 pt-6 md:pb-12">
+          <h2 id={`${id}-heading`} className="t-h2">
+            {heading}
+          </h2>
+          {intro && <p className="t-lead mt-4 max-w-2xl">{intro}</p>}
+        </div>
+      ) : (
+        <div className="pt-12 md:pt-16" />
+      )}
 
       <div className="flex flex-col">
-        {site.featured.map((item, i) => {
+        {items.map((item, idx) => {
+          const i = idx + startAt;
           const gallery = galleryFor(item);
           const paper = PAPER[i % PAPER.length];
           return (
             <article
               key={item.slug}
               aria-labelledby={`case-${item.slug}`}
-              className={i === 0 ? "" : "-mt-px"}
+              className={idx === 0 ? "" : "-mt-px"}
             >
               <div className="container-page">
                 <p className={`folder-tab ${paper} ${TAB_X[i % TAB_X.length]}`}>
@@ -112,9 +137,9 @@ export function Featured({ headingLevel = "h1" }: { headingLevel?: "h1" | "h2" }
                     <p aria-hidden="true" className="mb-4 font-display text-[clamp(4rem,9vw,7.5rem)] italic leading-none text-onpaper/20">
                       {pad(i + 1)}
                     </p>
-                    <h2 id={`case-${item.slug}`} className="t-h1 !text-onpaper">
+                    <h3 id={`case-${item.slug}`} className="t-h1 !text-onpaper">
                       {item.title}
-                    </h2>
+                    </h3>
                     <p className="mt-6 text-[17px] leading-[1.7]">{item.description}</p>
 
                     <p className="mt-6 text-2xs font-semibold uppercase tracking-micro">

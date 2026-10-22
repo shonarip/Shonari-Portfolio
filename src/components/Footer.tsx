@@ -64,7 +64,7 @@ export function Footer({ invite = true }: { invite?: boolean }) {
             © 2026 {site.name} · {site.location} · Colors sampled from the Homage to Nihon series
           </p>
           <Link href="/portfolio" className="t-small hover:text-accent">
-            Back to the work
+            Back to Work
           </Link>
         </div>
       </div>

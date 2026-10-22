@@ -262,8 +262,8 @@ export const site = {
   /** /work page header copy (replaces hardcoded intro in work/page.tsx) */
   workIndex: {
     heading: "Index",
-    intro: "Every piece, grouped by discipline. Open any image to see it full size. The full project stories are on the Portfolio page.",
-    backLabel: "Back to Portfolio",
+    intro: "Every piece, grouped by discipline. Open any image to see it full size. The full project stories are on the Work page.",
+    backLabel: "Back to Work",
     backHref: "/portfolio",
   },
 
@@ -293,7 +293,7 @@ export const site = {
 
   nav: [
     { label: "Home", href: "/" },
-    { label: "Works", href: "/portfolio" },
+    { label: "Work", href: "/portfolio" },
     { label: "About", href: "/contact#about" },
     { label: "Contact", href: "/contact" },
     { label: "Resume", href: RESUME, external: true },
@@ -315,6 +315,7 @@ export const site = {
   featured: [
     {
       slug: "physical-production",
+      group: "client",
       title: "Physical Production",
       year: "2026",
       caption: "Apparel & signage",
@@ -338,6 +339,7 @@ export const site = {
     },
     {
       slug: "homage-to-nihon",
+      group: "personal",
       title: "Homage to Nihon",
       year: "2024",
       caption: "Manga edits",
