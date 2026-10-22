@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { Backdrop } from "@/components/Backdrop";
 import { CaseGallery } from "@/components/CaseGallery";
 import { CaseFacts } from "@/components/CaseFacts";
+import { CaseFiles } from "@/components/CaseFiles";
 import { site } from "@/content/site";
 
 type PageProps = {
@@ -83,7 +84,12 @@ export default async function WorkCasePage({ params }: PageProps) {
             </p>
           )}
 
+          {"caseFiles" in project && project.caseFiles ? <CaseFiles files={project.caseFiles} /> : null}
+
           <div className="mt-12">
+            {"caseFiles" in project && project.caseFiles ? (
+              <h2 className="t-h2 mb-6 border-t border-ink/15 pt-12">Full archive</h2>
+            ) : null}
             <CaseGallery
               title={project.title}
               images={images}

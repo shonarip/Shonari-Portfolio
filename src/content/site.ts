@@ -92,6 +92,61 @@ const physicalGroups = [
   },
 ] as const;
 
+/**
+ * Physical Production case files: three client jobs told start to finish, above the full archive.
+ * `null` fields render as dashed placeholders until Shonari fills in the real details.
+ */
+const physicalCaseFiles = [
+  {
+    id: "deeply-rooted",
+    title: "Deeply Rooted Yoga",
+    client: "Deeply Rooted Yoga",
+    year: "2024",
+    brief: "A modern, eye-catching brand that could be produced for real and used across many spaces, from a water bottle to a street-side sign.",
+    role: "Sole designer, FASTSIGNS Indianapolis",
+    made: "Logo, “Become one” poster, water-bottle print, studio signage and a street-side billboard mockup.",
+    process: "Concept to print-ready files in Illustrator and Photoshop.",
+    output: "Sizes from logo icons up to an 18×24 in poster; printed on Coroplast, 100 lb gloss and stickers.",
+    result: "Delivered as high-quality, production-ready print.",
+    images: [
+      PRO + "29-deeply-rooted-billboard-mockup.jpg",
+      PRO + "27-deeply-rooted-logo.webp",
+      PRO + "28-deeply-rooted-yoga-poster.jpg",
+      PRO + "25-deeply-rooted-bottle-hand.webp",
+    ],
+  },
+  {
+    id: "twenty-two",
+    title: "Twenty Two",
+    client: "Twenty Two",
+    year: "2024",
+    brief: "A modern, eye-catching mark that holds up at any size and on any platform.",
+    role: "Sole designer, FASTSIGNS Indianapolis",
+    made: "Round logo for a superfood smoothie, açaí bowl and fresh juice bar.",
+    process: "Concept to print-ready files in Illustrator and Photoshop.",
+    output: "Vector logo that scales from an icon to signage; prints on Coroplast, 100 lb gloss and stickers.",
+    result: "Delivered as high-quality, production-ready print.",
+    images: [PRO + "21-twenty-two-logo.webp"],
+  },
+  {
+    id: "presidential-touch",
+    title: "Presidential Touch",
+    client: "Presidential Touch Detailing",
+    year: "2024",
+    brief: "Eye-catching, modern promo pieces that print cleanly and work across formats, from a flyer to a business card.",
+    role: "Sole designer, FASTSIGNS Indianapolis",
+    made: "Limo service flyer, detailing business cards and a wash promo.",
+    process: "Concept to print-ready files in Illustrator and Photoshop.",
+    output: "Print-ready flyer and card files for 100 lb gloss, Coroplast or sticker stock.",
+    result: "Delivered as high-quality, production-ready print.",
+    images: [
+      PRO + "02-presidential-touch-limo.jpg",
+      PRO + "07-pro-07-9a95f687.jpg",
+      "/work/prez-wash.jpg",
+    ],
+  },
+] as const;
+
 /** The three best previews, shown first on the front page: a brand in use, a logo mark, and a logo illustration. */
 const physicalPreview: readonly string[] = [
   PRO + "29-deeply-rooted-billboard-mockup.jpg",
@@ -385,6 +440,7 @@ export const site = {
       image: physicalImages[0],
       images: physicalImages,
       groups: physicalGroups,
+      caseFiles: physicalCaseFiles,
     },
     {
       slug: "professional-production",
