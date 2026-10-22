@@ -8,6 +8,7 @@ import { CaseGallery } from "@/components/CaseGallery";
 import { CaseFacts } from "@/components/CaseFacts";
 import { CaseFiles } from "@/components/CaseFiles";
 import { site } from "@/content/site";
+import { pageMeta } from "@/content/meta";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -39,10 +40,7 @@ export async function generateMetadata({
   if (!project) {
     return { title: site.name };
   }
-  return {
-    title: project.title,
-    description: project.description,
-  };
+  return pageMeta(project.title, project.description);
 }
 
 export default async function WorkCasePage({ params }: PageProps) {

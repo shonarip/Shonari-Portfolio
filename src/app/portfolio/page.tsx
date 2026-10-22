@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Header } from "@/components/Header";
+import { pageMeta } from "@/content/meta";
 import { Featured } from "@/components/Featured";
 import { AvailablePrintsSection } from "@/components/AvailablePrintsSection";
 import { PhotographySection } from "@/components/PhotographySection";
@@ -8,11 +9,10 @@ import { VideographySection } from "@/components/VideographySection";
 import { Footer } from "@/components/Footer";
 import { Backdrop } from "@/components/Backdrop";
 
-export const metadata: Metadata = {
-  title: "Work",
-  description:
-    "Client print, signage and apparel work first, then personal manga edits, prints, photography and motion by Shonari Phillips.",
-};
+export const metadata: Metadata = pageMeta(
+  "Work",
+  "Client print, signage and apparel work first, then personal manga edits, prints, photography and motion by Shonari Phillips.",
+);
 
 /** Client work leads; personal lanes follow under one heading. */
 const sectionLinks = [

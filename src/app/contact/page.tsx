@@ -3,12 +3,10 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Backdrop } from "@/components/Backdrop";
 import { site } from "@/content/site";
+import { pageMeta } from "@/content/meta";
 import { socialLinks } from "@/content/links";
 
-export const metadata: Metadata = {
-  title: site.contactPage.title,
-  description: site.contactPage.intro,
-};
+export const metadata: Metadata = pageMeta(site.contactPage.title, site.contactPage.intro);
 
 export default function ContactPage() {
   return (
