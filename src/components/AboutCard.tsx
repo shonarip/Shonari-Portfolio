@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { site } from "@/content/site";
-import { Rotator } from "./Rotator";
 import { Seal } from "./ProofMarks";
 
 const PORTRAIT = "/work/about/shonari-portrait.jpg";
@@ -44,7 +43,7 @@ export function AboutCard() {
                 id="about-card-heading"
                 className="font-display text-[clamp(2.5rem,6vw,5rem)] leading-[0.98] tracking-tight"
               >
-                I design <Rotator words={hero.words} />
+                I design prints, signage and apparel.
                 <span className="mt-2 block text-[0.55em] italic leading-tight text-onpaper-soft">
                   from first sketch to the finished piece.
                 </span>

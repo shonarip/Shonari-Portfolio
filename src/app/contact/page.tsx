@@ -6,7 +6,7 @@ import { site } from "@/content/site";
 import { pageMeta } from "@/content/meta";
 import { socialLinks } from "@/content/links";
 
-export const metadata: Metadata = pageMeta(site.contactPage.title, site.contactPage.intro);
+export const metadata: Metadata = pageMeta(site.contactPage.title, site.contactPage.intro, "/contact");
 
 export default function ContactPage() {
   return (

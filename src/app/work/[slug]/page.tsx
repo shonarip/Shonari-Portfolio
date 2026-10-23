@@ -40,7 +40,7 @@ export async function generateMetadata({
   if (!project) {
     return { title: site.name };
   }
-  return pageMeta(project.title, project.description);
+  return pageMeta(project.title, project.description, `/work/${slug}`);
 }
 
 export default async function WorkCasePage({ params }: PageProps) {

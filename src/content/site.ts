@@ -484,7 +484,7 @@ export const site = {
   availablePrints: {
     heading: "Prints",
     intro:
-      "Original pieces collected over time, all available as prints.",
+      "Seventeen original pieces — skulls, cities, figures and glitch studies. Available as prints; email me for sizes.",
     /** Adobe Prints solo-work — 17 stills, DZ carousel pack */
     images: [
       "/work/prints/carousel/01.jpg",

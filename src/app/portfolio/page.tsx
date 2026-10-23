@@ -12,6 +12,7 @@ import { Backdrop } from "@/components/Backdrop";
 export const metadata: Metadata = pageMeta(
   "Work",
   "Client print, signage and apparel work first, then personal manga edits, prints, photography and motion by Shonari Phillips.",
+  "/portfolio",
 );
 
 /** Client work leads; personal lanes follow under one heading. */

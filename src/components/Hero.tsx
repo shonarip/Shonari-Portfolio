@@ -32,10 +32,6 @@ export function Hero() {
 
   return (
     <section id="top" aria-labelledby="hero-heading" className="relative">
-      <p className="rail absolute left-4 top-1/2 hidden -translate-y-1/2 xl:block" aria-hidden="true">
-        Portfolio · {site.name} · 2026
-      </p>
-
       {/* A soft dark pool behind the name and intro, so the moving background sits back there. */}
       <div aria-hidden="true" className="hero-scrim pointer-events-none absolute inset-0 -z-[1]" />
 

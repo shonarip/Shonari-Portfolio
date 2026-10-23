@@ -30,13 +30,15 @@ const serif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL("https://nariportfolio.com"),
   title: {
     default: `${site.name} — ${site.title}`,
     template: `%s — ${site.name}`,
   },
   description: site.tagline,
+  alternates: { canonical: "/" },
   openGraph: {
+    url: "/",
     title: `${site.name} — ${site.title}`,
     description: site.tagline,
     type: "website",
